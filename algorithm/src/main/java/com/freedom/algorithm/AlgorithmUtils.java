@@ -21,7 +21,27 @@ public final class AlgorithmUtils {
     for (int i : arr) {
       System.out.print(i + " ");
     }
-    System.out.println("===");
+    System.out.println("");
   }
 
+  public static void convertToBinary(int a) {
+    for (int i = 31; i >= 0; i--) {
+      System.out.print(((a >> i) & 1) == 0 ? "0" : "1");
+    }
+    System.out.println("");
+  }
+
+  public static void convertToBinary(long a) {
+    for (int i = 63; i >= 0; i--) {
+      System.out.print(((a >> i) & 1) == 0 ? "0" : "1");
+    }
+    System.out.println("");
+  }
+
+
+  public static void main(String[] args) {
+    long a = Long.MAX_VALUE;
+    convertToBinary(a);
+    System.out.println(a);
+  }
 }
