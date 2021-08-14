@@ -1,16 +1,16 @@
-package com.freedom.algorithm;
+package com.freedom.algorithm.sort;
 
-import static com.freedom.algorithm.AlgorithmUtils.*;
+import static com.freedom.algorithm.util.AlgorithmUtils.*;
 
 import java.util.Arrays;
 
 /**
- * 选择排序
+ * 冒泡排序
  *
  * @author tobebetter9527
  * @create 2021/08/12 23:00
  */
-public class SelectSort {
+public class BubbleSort {
 
   public static void main(String[] args) {
     long start = System.currentTimeMillis();
@@ -21,7 +21,7 @@ public class SelectSort {
       int[] arr = generateRandomArray(maxSize, maxValue);
       int[] arr1 = copyArray(arr);
       int[] arr2 = copyArray(arr);
-      selectSort(arr1);
+      bubbleSort(arr1);
       Arrays.sort(arr2);
       if (!isEqual(arr1, arr2)) {
         println(arr);
@@ -33,20 +33,19 @@ public class SelectSort {
     System.out.println((end - start) / 1000);
   }
 
-  public static void selectSort(int[] arr) {
+  public static void bubbleSort(int[] arr) {
     if (arr == null) {
       return;
     }
 
-    for (int i = 0; i < arr.length; i++) {
-      int minIndex = i;
-      for (int j = i + 1; j < arr.length; j++) {
-        if (arr[minIndex] > arr[j]) {
-          minIndex = j;
+    for (int end = arr.length - 1; end >= 0; end--) {
+      for (int i = 0; i < end; i++) {
+        if (arr[i] > arr[i + 1]) {
+          swap(arr, i, i + 1);
         }
       }
-      swap(arr, i, minIndex);
     }
   }
+
 
 }

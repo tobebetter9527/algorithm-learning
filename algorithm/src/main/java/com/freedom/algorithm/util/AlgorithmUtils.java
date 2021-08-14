@@ -1,4 +1,4 @@
-package com.freedom.algorithm;
+package com.freedom.algorithm.util;
 
 /**
  * 工具类
@@ -47,7 +47,7 @@ public final class AlgorithmUtils {
    */
   public static int[] generateRandomArray(int maxSize, int maxValue) {
     if (maxSize < 0 || maxValue < 0) {
-      throw new IllegalArgumentException("args maxSize or maxValue is not right");
+      throw new IllegalArgumentException("args maxSize or maxValue is less than 0");
     }
 
     int size = (int) (Math.random() * maxSize);

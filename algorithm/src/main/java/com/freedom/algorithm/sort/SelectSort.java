@@ -1,17 +1,16 @@
-package com.freedom.algorithm;
+package com.freedom.algorithm.sort;
 
-import static com.freedom.algorithm.AlgorithmUtils.*;
+import static com.freedom.algorithm.util.AlgorithmUtils.*;
 
 import java.util.Arrays;
 
-
 /**
- * 插入排序
+ * 选择排序
  *
  * @author tobebetter9527
  * @create 2021/08/12 23:00
  */
-public class InsertSort {
+public class SelectSort {
 
   public static void main(String[] args) {
     long start = System.currentTimeMillis();
@@ -22,7 +21,7 @@ public class InsertSort {
       int[] arr = generateRandomArray(maxSize, maxValue);
       int[] arr1 = copyArray(arr);
       int[] arr2 = copyArray(arr);
-      insertSort(arr1);
+      selectSort(arr1);
       Arrays.sort(arr2);
       if (!isEqual(arr1, arr2)) {
         println(arr);
@@ -34,18 +33,20 @@ public class InsertSort {
     System.out.println((end - start) / 1000);
   }
 
-  public static void insertSort(int[] arr) {
+  public static void selectSort(int[] arr) {
     if (arr == null) {
       return;
     }
-    for (int i = 0; i < arr.length - 1; i++) {
-      int j = i + 1;
-      while (j >= 1 && arr[j - 1] > arr[j]) {
-        swap(arr, j, j - 1);
-        j--;
+
+    for (int i = 0; i < arr.length; i++) {
+      int minIndex = i;
+      for (int j = i + 1; j < arr.length; j++) {
+        if (arr[minIndex] > arr[j]) {
+          minIndex = j;
+        }
       }
+      swap(arr, i, minIndex);
     }
   }
-
 
 }
