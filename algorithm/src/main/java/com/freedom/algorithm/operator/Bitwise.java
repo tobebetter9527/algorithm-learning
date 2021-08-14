@@ -13,7 +13,7 @@ public class Bitwise {
 
   public static void main(String[] args) {
     int[] arr = new int[]{22, 22, 33, 33, 33, 44, 44, 44, 888, 888, 888, 999, 999, 999};
-    int i = onlyKTimes(arr, 3);
+    int i = onlyKTimes(arr, 2,3);
     System.out.println(i);
 
   }
@@ -23,7 +23,7 @@ public class Bitwise {
    *
    * @param arr 数组
    */
-  public static int onlyKTimes(int[] arr, int m) {
+  public static int onlyKTimes(int[] arr, int k, int m) {
     // 32位数组
     int[] t = new int[32];
     for (int num : arr) {
@@ -39,7 +39,11 @@ public class Bitwise {
     int a = 0;
     for (int i = 0; i < 32; i++) {
       // 如果该为数不能为m整除，说明该位累加了k次数的二进制1
-      if (t[i] % m != 0) {
+      if (t[i] % m == 0) {
+        continue;
+      }
+
+      if (t[i] % m == k) {
         a |= (1 << i);
       }
     }
