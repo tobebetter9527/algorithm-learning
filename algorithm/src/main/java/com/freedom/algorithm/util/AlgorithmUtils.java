@@ -12,6 +12,9 @@ public final class AlgorithmUtils {
   }
 
   public static void swap(int[] arr, int i, int j) {
+    if (i == j) {
+      return;
+    }
     arr[i] = arr[i] ^ arr[j];
     arr[j] = arr[i] ^ arr[j];
     arr[i] = arr[i] ^ arr[j];
@@ -94,7 +97,11 @@ public final class AlgorithmUtils {
   }
 
   public static void main(String[] args) {
-    int[] ints = generateRandomArray(100, 100);
-    println(ints);
+    int a = 12542;
+    convertToBinary(a);
+    int i = a & (-a);
+    convertToBinary(i);
+    convertToBinary(a & i);
+    System.out.println(i);
   }
 }
