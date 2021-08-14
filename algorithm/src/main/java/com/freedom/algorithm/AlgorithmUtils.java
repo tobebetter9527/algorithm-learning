@@ -17,7 +17,7 @@ public final class AlgorithmUtils {
     arr[i] = arr[i] ^ arr[j];
   }
 
-  public static void printin(int[] arr) {
+  public static void println(int[] arr) {
     for (int i : arr) {
       System.out.print(i + " ");
     }
@@ -38,10 +38,63 @@ public final class AlgorithmUtils {
     System.out.println("");
   }
 
+  /**
+   * 对数器，产生长度随机大小，数据随机大小的数组
+   *
+   * @param maxSize  最长数组值
+   * @param maxValue 最大值
+   * @return 数组
+   */
+  public static int[] generateRandomArray(int maxSize, int maxValue) {
+    if (maxSize < 0 || maxValue < 0) {
+      throw new IllegalArgumentException("args maxSize or maxValue is not right");
+    }
+
+    int size = (int) (Math.random() * maxSize);
+    int[] arr = new int[size];
+    for (int i = 0; i < size; i++) {
+      // 范围从-maxValue到maxValue
+      arr[i] = (int) (Math.random() * (maxValue + 1)) - (int) (Math.random() * (maxValue + 1));
+    }
+    return arr;
+  }
+
+  public static boolean isEqual(int[] arr1, int[] arr2) {
+    if (arr1 == null && arr2 != null) {
+      return false;
+    }
+    if (arr1 != null && arr2 == null) {
+      return false;
+    }
+    if (arr1 == null && arr2 == null) {
+      return true;
+    }
+    if (arr1.length != arr2.length) {
+      return false;
+    }
+
+    for (int i = 0; i < arr1.length; i++) {
+      if (arr1[i] != arr2[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  public static int[] copyArray(int[] arr) {
+    if (arr == null) {
+      return null;
+    }
+    int length = arr.length;
+    int[] copyArr = new int[length];
+    for (int i = 0; i < length; i++) {
+      copyArr[i] = arr[i];
+    }
+    return copyArr;
+  }
 
   public static void main(String[] args) {
-    long a = Long.MAX_VALUE;
-    convertToBinary(a);
-    System.out.println(a);
+    int[] ints = generateRandomArray(100, 100);
+    println(ints);
   }
 }

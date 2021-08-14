@@ -2,6 +2,8 @@ package com.freedom.algorithm;
 
 import static com.freedom.algorithm.AlgorithmUtils.*;
 
+import java.util.Arrays;
+
 
 /**
  * 插入排序
@@ -12,9 +14,24 @@ import static com.freedom.algorithm.AlgorithmUtils.*;
 public class InsertSort {
 
   public static void main(String[] args) {
-    int[] arr = new int[]{9, 3, 2, 9, 1};
-    insertSort(arr);
-    printin(arr);
+    long start = System.currentTimeMillis();
+    int testTimes = 1000000;
+    int maxSize = 100;
+    int maxValue = 1000;
+    for (int i = 0; i < testTimes; i++) {
+      int[] arr = generateRandomArray(maxSize, maxValue);
+      int[] arr1 = copyArray(arr);
+      int[] arr2 = copyArray(arr);
+      insertSort(arr1);
+      Arrays.sort(arr2);
+      if (!isEqual(arr1, arr2)) {
+        println(arr);
+        println(arr1);
+        println(arr2);
+      }
+    }
+    long end = System.currentTimeMillis();
+    System.out.println((end - start) / 1000);
   }
 
   public static void insertSort(int[] arr) {

@@ -2,6 +2,8 @@ package com.freedom.algorithm;
 
 import static com.freedom.algorithm.AlgorithmUtils.*;
 
+import java.util.Arrays;
+
 /**
  * 冒泡排序
  *
@@ -11,9 +13,24 @@ import static com.freedom.algorithm.AlgorithmUtils.*;
 public class BubbleSort {
 
   public static void main(String[] args) {
-    int[] arr = new int[]{1, 3, 2, 9, 5};
-    bubbleSort(arr);
-    printin(arr);
+    long start = System.currentTimeMillis();
+    int testTimes = 1000000;
+    int maxSize = 100;
+    int maxValue = 1000;
+    for (int i = 0; i < testTimes; i++) {
+      int[] arr = generateRandomArray(maxSize, maxValue);
+      int[] arr1 = copyArray(arr);
+      int[] arr2 = copyArray(arr);
+      bubbleSort(arr1);
+      Arrays.sort(arr2);
+      if (!isEqual(arr1, arr2)) {
+        println(arr);
+        println(arr1);
+        println(arr2);
+      }
+    }
+    long end = System.currentTimeMillis();
+    System.out.println((end - start) / 1000);
   }
 
   public static void bubbleSort(int[] arr) {
