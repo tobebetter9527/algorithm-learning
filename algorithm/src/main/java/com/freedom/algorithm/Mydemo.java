@@ -1,5 +1,9 @@
 package com.freedom.algorithm;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * demo
  *
@@ -9,9 +13,8 @@ package com.freedom.algorithm;
 public class Mydemo {
 
   public static void main(String[] args) {
-    int a = 5;
-    int b = a >> 1;
-    System.out.println(b);
+   int[][] a = new int[2][3];
+    System.out.println(a.length);
   }
 
 }
