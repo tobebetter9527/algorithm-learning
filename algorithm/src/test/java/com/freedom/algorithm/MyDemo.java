@@ -1,11 +1,5 @@
 package com.freedom.algorithm;
 
-/**
- * TODO
- *
- * @author tobebetter9527
- * @create 2021/08/27 21:09
- */
 public class MyDemo {
 
   public static void main(String[] args) {
@@ -21,3 +15,4 @@ public class MyDemo {
     arr[i] = arr[i] ^ arr[j];
   }
 }
+
