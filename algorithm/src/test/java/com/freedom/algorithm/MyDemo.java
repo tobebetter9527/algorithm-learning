@@ -3,9 +3,13 @@ package com.freedom.algorithm;
 public class MyDemo {
 
   public static void main(String[] args) {
-    int a = 200000000;
-    System.out.println(a & (-a));
-
+    int a = 6;
+    int b = 6;
+    a = a ^ b;
+    b = a ^ b;
+    a = a ^ b;
+    System.out.println(a);
+    System.out.println(b);
   }
 
 
@@ -14,5 +18,7 @@ public class MyDemo {
     arr[j] = arr[i] ^ arr[j];
     arr[i] = arr[i] ^ arr[j];
   }
+
+
 }
 

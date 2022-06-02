@@ -1,4 +1,4 @@
-package com.freedom.zuo.class02;
+package com.freedom.zuo.class02_bit_manipulation;
 
 import java.util.HashMap;
 import java.util.HashSet;
