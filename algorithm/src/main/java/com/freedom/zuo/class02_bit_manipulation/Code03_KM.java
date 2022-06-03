@@ -54,12 +54,9 @@ public class Code03_KM {
   public static int test(int[] arr, int k, int m) {
     HashMap<Integer, Integer> map = new HashMap<>(arr.length);
     for (int num : arr) {
-      if (map.containsKey(num)) {
-        map.put(num, map.get(num) + 1);
-      } else {
-        map.put(num, 1);
-      }
+      map.put(num, map.getOrDefault(num, 0) + 1);
     }
+
     int ans = 0;
     for (int num : map.keySet()) {
       if (map.get(num) == k) {
