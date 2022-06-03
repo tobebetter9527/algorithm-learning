@@ -8,6 +8,11 @@ public class MyDemo {
 
     System.out.println(a);
     System.out.println(b);
+
+    Double c = 3124.2D;
+    byte b1 = c.byteValue();
+    System.out.println(b1);
+
   }
 
 
