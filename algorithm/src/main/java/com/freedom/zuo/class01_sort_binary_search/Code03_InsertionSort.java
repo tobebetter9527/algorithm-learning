@@ -1,4 +1,4 @@
-package com.freedom.zuo.class01;
+package com.freedom.zuo.class01_sort_binary_search;
 
 import java.util.Arrays;
 
