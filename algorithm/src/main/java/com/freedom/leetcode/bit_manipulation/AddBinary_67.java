@@ -41,10 +41,10 @@ public class AddBinary_67 {
     int aLength = a.length();
     int bLength = b.length();
     for (int i = 0; i < aLength; i++) {
-      arr[aLength - 1 - i] += Integer.valueOf(String.valueOf(a.charAt(i)));
+      arr[aLength - 1 - i] += a.charAt(i) - '0';
     }
     for (int i = 0; i < bLength; i++) {
-      arr[bLength - 1 - i] += Integer.valueOf(String.valueOf(b.charAt(i)));
+      arr[bLength - 1 - i] += b.charAt(i) - '0';
     }
 
     StringBuilder sb = new StringBuilder(max + 1);
@@ -69,7 +69,7 @@ public class AddBinary_67 {
     String a = "1010";
     String b = "1011";
 
-    System.out.println(addBinary2(a, b));
+    System.out.println(addBinary(a, b));
   }
 
 }

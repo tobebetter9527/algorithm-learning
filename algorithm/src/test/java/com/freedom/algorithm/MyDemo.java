@@ -3,15 +3,7 @@ package com.freedom.algorithm;
 public class MyDemo {
 
   public static void main(String[] args) {
-    int a = 6 << 0;
-    int b = 6;
-
-    System.out.println(a);
-    System.out.println(b);
-
-    Double c = 3124.2D;
-    byte b1 = c.byteValue();
-    System.out.println(b1);
+    Integer.valueOf("10111111111111111111111111111111", 2);
 
   }
 
