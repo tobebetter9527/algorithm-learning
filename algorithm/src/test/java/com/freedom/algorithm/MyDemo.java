@@ -3,8 +3,9 @@ package com.freedom.algorithm;
 public class MyDemo {
 
   public static void main(String[] args) {
-    Integer.valueOf("10111111111111111111111111111111", 2);
-
+    int a = 3;
+    double b = 3.5;
+    System.out.println(a > b);
   }
 
 
