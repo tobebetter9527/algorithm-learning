@@ -6,7 +6,7 @@ package com.freedom.leetcode.bit_manipulation;
  * @author tobebetter9527
  * @create 2022/06/03 21:44
  */
-public class ReverseBits_190 {
+public class Problem190_ReverseBits {
 
   // you need treat n as an unsigned value
   public int reverseBits(int n) {

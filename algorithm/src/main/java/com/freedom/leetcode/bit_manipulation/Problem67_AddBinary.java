@@ -6,7 +6,7 @@ package com.freedom.leetcode.bit_manipulation;
  * @author tobebetter9527
  * @create 2022/06/03 10:43
  */
-public class AddBinary_67 {
+public class Problem67_AddBinary {
 
   /**
    * 官方代码，思路跟我的一样，代码更简洁

@@ -10,7 +10,7 @@ package com.freedom.leetcode.bit_manipulation;
  * @author tobebetter9527
  * @create 2022/06/02 22:03
  */
-public class SingleNumber_136 {
+public class Problem136_SingleNumber {
 
   public int singleNumber(int[] nums) {
     int result = 0;
