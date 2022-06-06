@@ -29,7 +29,6 @@ public class Problem69_MySqrt {
         high = mid - 1;
       }
     }
-
     return ans;
   }
 

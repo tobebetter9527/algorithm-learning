@@ -1,5 +1,7 @@
 package com.freedom.algorithm;
 
+import java.util.LinkedList;
+
 public class MyDemo {
 
   public static void main(String[] args) {
