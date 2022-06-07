@@ -32,6 +32,13 @@ public class Code02_DeleteGivenValue {
   }
 
 
+  public static DoubleNode removeValue(DoubleNode head, int value) {
+
+
+    return null;
+  }
+
+
   public static void main(String[] args) {
     Node node1 = new Node(1);
     Node node2 = new Node(1);
@@ -57,7 +64,6 @@ public class Code02_DeleteGivenValue {
 
   }
 
-
   private static class Node {
 
     public int value;
@@ -73,4 +79,20 @@ public class Code02_DeleteGivenValue {
     }
   }
 
+  private static class DoubleNode {
+
+    public int value;
+    public DoubleNode pre;
+    public DoubleNode next;
+
+    public DoubleNode(int value) {
+      this.value = value;
+    }
+
+    public DoubleNode(int value, DoubleNode pre, DoubleNode next) {
+      this.value = value;
+      this.pre = pre;
+      this.next = next;
+    }
+  }
 }

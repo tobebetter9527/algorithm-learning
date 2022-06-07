@@ -24,8 +24,6 @@ public class Code03_StackUseArray {
       this.size = size;
     }
 
-
-
     public int push(int item) {
       if (elementCount + 1 > size) {
         throw new RuntimeException("the stack is full");
