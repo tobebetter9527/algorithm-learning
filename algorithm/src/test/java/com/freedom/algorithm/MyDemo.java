@@ -1,13 +1,11 @@
 package com.freedom.algorithm;
 
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class MyDemo {
 
   public static void main(String[] args) {
-    int a = 3;
-    double b = 3.5;
-    System.out.println(a > b);
   }
 
 
