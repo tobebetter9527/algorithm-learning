@@ -99,24 +99,6 @@ public class Problem21_MergeTwoSortedLists {
     return list1.val <= list2.val ? list1 : list2;
   }
 
-  private static class ListNode {
-
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-      this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-      this.val = val;
-      this.next = next;
-    }
-  }
-
 }
 
 
