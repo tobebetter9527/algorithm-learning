@@ -6,12 +6,13 @@ import java.util.Stack;
 public class MyDemo {
 
   public static void main(String[] args) {
+
+int a = 2 /2;
+    System.out.println(a);
   }
 
 
-  public static void swap(int[] arr, int i, int j) {
 
-  }
 
 
 }
