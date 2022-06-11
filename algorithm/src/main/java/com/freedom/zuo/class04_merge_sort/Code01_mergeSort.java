@@ -6,7 +6,7 @@ package com.freedom.zuo.class04_merge_sort;
  * @author tobebetter9527
  * @create 2022/06/11 15:40
  */
-public class Code1_mergeSort {
+public class Code01_mergeSort {
 
   /**
    * 时间复杂度O(nlogn),master公式计算
