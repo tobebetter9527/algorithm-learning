@@ -36,7 +36,8 @@ public class Code01_mergeSort {
     int index1 = left;
     int index2 = mid + 1;
     while (index1 <= mid && index2 <= right) {
-      nums[i++] = arr[index1] >= arr[index2] ? arr[index2++] : arr[index1++];
+      // 稳定算法
+      nums[i++] = arr[index1] <= arr[index2] ? arr[index1++] : arr[index2++];
     }
 
     // 可能有一个已经处理完了，另外一个没有
