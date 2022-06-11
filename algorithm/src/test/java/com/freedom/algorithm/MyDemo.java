@@ -1,18 +1,19 @@
 package com.freedom.algorithm;
 
+import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Stack;
 
 public class MyDemo {
 
   public static void main(String[] args) {
+    Deque<String> stack = new LinkedList<>();
+    String pop = stack.pop();
+    System.out.println(pop);
 
-int a = 2 /2;
-    System.out.println(a);
+
+
+
   }
-
-
-
 
 
 }
