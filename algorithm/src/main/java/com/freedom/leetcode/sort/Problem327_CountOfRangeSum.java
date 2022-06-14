@@ -120,13 +120,13 @@ public class Problem327_CountOfRangeSum {
     for (int i = 0; i < testTimes; i++) {
       int[] nums = generateArray(rang, maxSize);
       int[] copyNums = copyArray(nums);
-      int lower;
-      int upper;
-      do {
-        lower = (int) (Math.random() * rangForLowerUpper) - (int) (Math.random() * rangForLowerUpper);
-        upper = (int) (Math.random() * rangForLowerUpper) - (int) (Math.random() * rangForLowerUpper);
-      } while (lower > upper);
-
+      int lower = (int) (Math.random() * rangForLowerUpper) - (int) (Math.random() * rangForLowerUpper);
+      int upper = (int) (Math.random() * rangForLowerUpper) - (int) (Math.random() * rangForLowerUpper);
+      if (lower > upper) {
+        int temp = upper;
+        upper = lower;
+        lower = temp;
+      }
       int testCountRangeSum = testCountRangeSum(copyNums, lower, upper);
       int countRangeSum = countRangeSum(nums, lower, upper);
       if (testCountRangeSum != countRangeSum) {
