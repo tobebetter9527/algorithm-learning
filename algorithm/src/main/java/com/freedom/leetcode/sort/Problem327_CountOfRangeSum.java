@@ -11,7 +11,14 @@ package com.freedom.leetcode.sort;
  */
 public class Problem327_CountOfRangeSum {
 
-
+  /**
+   * 前缀和，lower<= S(j) - S(i-1)<=upper, 转为S(j)-upper<=S(i-1)<=S(j)-lower
+   *
+   * @param nums
+   * @param lower
+   * @param upper
+   * @return
+   */
   public static int countRangeSum(int[] nums, int lower, int upper) {
     if (nums == null || nums.length == 0) {
       return 0;
