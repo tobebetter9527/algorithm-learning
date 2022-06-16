@@ -48,9 +48,12 @@ public class Code02_QuickSort {
     if (left >= right) {
       return;
     }
+    // 随机选一个作为pivot，降低出现最差时间复杂度的概率
+    swap(arr, left + (int) (Math.random() * (right - left + 1)), right);
+
     int[] indexs = dutchNationalFlag(arr, left, right);
     processWithDutchFlag(arr, left, indexs[0] - 1);
-    processWithDutchFlag(arr, indexs[0] + 1, right);
+    processWithDutchFlag(arr, indexs[1] + 1, right);
   }
 
 
@@ -146,7 +149,7 @@ public class Code02_QuickSort {
   }
 
   // for test
-  public static boolean isEqual(int[] arr1, int[] arr2) {
+  private static boolean isEqual(int[] arr1, int[] arr2) {
     if ((arr1 == null && arr2 != null) || (arr1 != null && arr2 == null)) {
       return false;
     }
