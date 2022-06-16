@@ -1,7 +1,5 @@
 package com.freedom.zuo.class05_merge_sort_quick_sort;
 
-import java.util.Arrays;
-
 /**
  * 快速排序
  */
@@ -38,6 +36,65 @@ public class Code02_QuickSort {
     return i;
   }
 
+  public static void quickSort2ThroughDutchFlag(int[] arr) {
+    if (arr == null || arr.length < 2) {
+      return;
+    }
+
+    processWithDutchFlag(arr, 0, arr.length - 1);
+  }
+
+  private static void processWithDutchFlag(int[] arr, int left, int right) {
+    if (left >= right) {
+      return;
+    }
+    int[] indexs = dutchNationalFlag(arr, left, right);
+    processWithDutchFlag(arr, left, indexs[0] - 1);
+    processWithDutchFlag(arr, indexs[0] + 1, right);
+  }
+
+
+  /**
+   * The Dutch national flag (DNF) problem is one of the most popular programming problems proposed by Edsger Dijkstra.
+   * The flag of the Netherlands consists of three colors: white, red, and blue. The task is to randomly arrange balls
+   * of white, red, and blue such that balls of the same color are placed together.
+   * <p>
+   * Consider this problem on an array; the task is to sort arrays of 0, 1, and 2 in linear time without any extra
+   * space. Since the array is only traversed once, the time complexity of the algorithm given below is O(n).
+   * <p>
+   * 给定一个数组arr，和一个整数num。请把小于num的数放在数组的左边，等于num的数放在中间，大于num的数放在数组的右边。
+   *
+   * @return 数组下标
+   */
+  private static int[] dutchNationalFlag(int[] arr, int left, int right) {
+    if (left > right) {
+      return new int[]{-1, -1};
+    }
+    if (left == right) {
+      return new int[]{left, right};
+    }
+    // 最后一个为pivot
+    int pivot = right;
+    // 小于给定值的索引
+    int less = left - 1;
+    // 大于给定值的索引
+    int more = right;
+    int index = left;
+
+    while (index < more) {
+      if (arr[index] == arr[pivot]) {
+        index++;
+      } else if (arr[index] < arr[pivot]) {
+        swap(arr, ++less, index++);
+      } else {
+        swap(arr, index, --more);
+      }
+    }
+    swap(arr, more, pivot);
+    return new int[]{less + 1, more};
+  }
+
+
   private static void swap(int[] arr, int index, int i) {
     int temp = arr[index];
     arr[index] = arr[i];
@@ -59,8 +116,12 @@ public class Code02_QuickSort {
 //    }
 //    System.out.println("done!");
 
-    int[] arr = {3, 2, 1, 3, 6, 4, 3};
-    quickSort(arr);
+//    int[] arr = {3, 2, 1, 3, 6, 4, 3};
+//    quickSort(arr);
+
+    int[] arr = generateRandomArray(100, 1000);
+    quickSort2ThroughDutchFlag(arr);
+    System.out.println(arr);
   }
 
   private static int[] generateRandomArray(int rang, int maxSize) {
