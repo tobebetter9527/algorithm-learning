@@ -7,12 +7,10 @@ import javax.sound.midi.Soundbank;
 public class MyDemo {
 
   public static void main(String[] args) {
-    for (int i = 0; i < 1000000000; i++) {
-      int random = (int) (Math.random() * 10);
-      if (random == 0) {
-        System.out.println("0");
-      }
-    }
+    int a = (1 << 1) + 10;
+    int b = 1 << (1 + 10);
+    System.out.println(a);
+    System.out.println(b);
   }
 
 
