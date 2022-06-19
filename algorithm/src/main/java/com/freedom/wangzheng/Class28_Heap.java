@@ -29,8 +29,9 @@ public class Class28_Heap {
       return;
     }
 
+    arr[size] = value;
     size++;
-    arr[size - 1] = value;
+
     int i = size - 1;
     while (i >= 0 && arr[i] > arr[(i - 1) / 2]) {
       swap(arr, i, (i - 1) / 2);
@@ -78,7 +79,7 @@ public class Class28_Heap {
   public static void sort(int[] arr) {
     buildHeap(arr);
     int k = arr.length - 1;
-    while (k >= 0) {
+    while (k > 0) {
       swap(arr, 0, k);
       k--;
       heapify(arr, k + 1, 0);
