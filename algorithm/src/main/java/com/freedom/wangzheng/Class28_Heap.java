@@ -81,8 +81,8 @@ public class Class28_Heap {
     int k = arr.length - 1;
     while (k > 0) {
       swap(arr, 0, k);
+      heapify(arr, k, 0);
       k--;
-      heapify(arr, k + 1, 0);
     }
   }
 
