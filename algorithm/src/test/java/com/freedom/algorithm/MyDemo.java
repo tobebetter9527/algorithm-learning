@@ -7,10 +7,8 @@ import javax.sound.midi.Soundbank;
 public class MyDemo {
 
   public static void main(String[] args) {
-    int a = (1 << 1) + 10;
-    int b = 1 << (1 + 10);
-    System.out.println(a);
-    System.out.println(b);
+    int[][] arr = new int[10][2];
+    System.out.println(arr.length);
   }
 
 
