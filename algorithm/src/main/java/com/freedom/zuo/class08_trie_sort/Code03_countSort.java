@@ -12,6 +12,8 @@ public class Code03_countSort {
 
   /**
    * arr的值为分数，从0到100. 时间复杂度O(n),空间复杂度O(m),m为最大值
+   * <p>
+   * 稳定的排序算法
    *
    * @param arr
    */
