@@ -39,7 +39,6 @@ public class Problem347_TopKFrequentElements {
     int[] arr = new int[heap.size()];
     for (int i = 0; i < k; i++) {
       arr[i] = heap.poll()[0];
-
     }
 
     return arr;
