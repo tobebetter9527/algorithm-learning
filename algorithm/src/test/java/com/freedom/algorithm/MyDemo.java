@@ -1,10 +1,15 @@
 package com.freedom.algorithm;
 
+import java.util.LinkedList;
+import java.util.List;
+import sun.awt.image.ImageWatched.Link;
+
 public class MyDemo {
 
   public static void main(String[] args) {
-    int a = 598975;
-    System.out.println(a / 10);
+    List<String> list = new LinkedList<>();
+    list.add(null);
+    System.out.println(list.size());
 
   }
 
