@@ -204,6 +204,61 @@ public class Code02_SerializeAndReconstructTree {
     return new Node(value);
   }
 
+  public static void main(String[] args) {
+    int maxLevel = 5;
+    int maxValue = 100;
+    int testTimes = 1000000;
+    for (int i = 0; i < testTimes; i++) {
+      Node head = generateRandomBinaryTree(maxLevel, maxValue);
+      Queue<String> preQueue = preSerial(head);
+      Queue<String> postQueue = postSerial(head);
+      Queue<String> levelQueue = levelSerial(head);
+      Node preHead = buildByPreQueue(preQueue);
+      Node postHead = buildByPosQueue(postQueue);
+      Node levelHead = buildByLevelQueue(levelQueue);
+      if (!isSameValueBT(head, preHead)) {
+        System.out.println("preHead something wrong!");
+      }
+      if (!isSameValueBT(head, postHead)) {
+        System.out.println("postHead something wrong!");
+      }
+      if (!isSameValueBT(head, levelHead)) {
+        System.out.println("levelHead something wrong!");
+      }
+    }
+    System.out.println("done!");
+  }
+
+  private static boolean isSameValueBT(Node head, Node preHead) {
+    if (head == null && preHead != null) {
+      return false;
+    }
+    if (head != null && preHead == null) {
+      return false;
+    }
+    if (head == null && preHead == null) {
+      return true;
+    }
+    if (head.value != preHead.value) {
+      return false;
+    }
+    return isSameValueBT(head.left, head.left) && isSameValueBT(head.right, preHead.right);
+  }
+
+  private static Node generateRandomBinaryTree(int maxLevel, int maxValue) {
+    return generate(1, maxLevel, maxValue);
+  }
+
+  private static Node generate(int level, int maxLevel, int maxValue) {
+    if (level > maxLevel || Math.random() < 0.5D) {
+      return null;
+    }
+    Node head = new Node(String.valueOf((int) (Math.random() * maxLevel)));
+    head.left = generate(level + 1, maxLevel, maxValue);
+    head.right = generate(level + 1, maxLevel, maxValue);
+    return head;
+  }
+
 
   private static class Node {
 
