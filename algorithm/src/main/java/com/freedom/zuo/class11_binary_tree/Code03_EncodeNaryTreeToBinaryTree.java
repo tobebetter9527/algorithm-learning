@@ -1,4 +1,4 @@
-package com.freedom.zuo.class_binary_tree;
+package com.freedom.zuo.class11_binary_tree;
 
 import java.util.ArrayList;
 import java.util.List;
