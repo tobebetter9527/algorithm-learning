@@ -1,7 +1,9 @@
 package com.freedom.zuo.class13_binary_tree_greedy;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -47,6 +49,98 @@ public class Code03_lowestAncestor {
     if (head.right != null) {
       parantMap.put(head.right, head);
       fillParantMap(head.right, parantMap);
+    }
+  }
+
+
+  public static Node lowestAncestor2(Node head, Node a, Node b) {
+    return process(head, a, b).ansNode;
+  }
+
+  private static Info process(Node head, Node a, Node b) {
+    if (head == null) {
+      return new Info(false, false, null);
+    }
+    Info leftInfo = process(head.left, a, b);
+    Info rightInfo = process(head.right, a, b);
+
+    boolean findA = head == a || leftInfo.findA || rightInfo.findA;
+    boolean findB = head == b || leftInfo.findB || rightInfo.findB;
+
+    Node ansNode = null;
+    if (leftInfo.ansNode != null) {
+      ansNode = leftInfo.ansNode;
+    } else if (rightInfo.ansNode != null) {
+      ansNode = rightInfo.ansNode;
+    } else {
+      // 左右子树都没有答案，如果此时a和b都发现了，head节点必要最低公共祖先
+      if (findA && findB) {
+        ansNode = head;
+      }
+    }
+    return new Info(findA, findB, ansNode);
+  }
+
+
+  public static void main(String[] args) {
+    int maxLevel = 5;
+    int maxValue = 100;
+    int testTimes = 10000000;
+    for (int i = 0; i < testTimes; i++) {
+      Node head = generateRandomBT(maxLevel, maxValue);
+      Node a = pickRandomNode(head);
+      Node b = pickRandomNode(head);
+      if (lowestAncestor1(head, a, b) != lowestAncestor2(head, a, b)) {
+        System.out.println("Something is wrong");
+      }
+    }
+
+    System.out.println("done!");
+  }
+
+  private static Node pickRandomNode(Node head) {
+    if (head == null) {
+      return null;
+    }
+
+    List<Node> list = new ArrayList<>();
+    inOrder(head, list);
+    return list.get((int) (Math.random() * list.size()));
+  }
+
+  private static void inOrder(Node head, List<Node> list) {
+    if (head == null) {
+      return;
+    }
+    inOrder(head.left, list);
+    list.add(head);
+    inOrder(head.right, list);
+  }
+
+  private static Node generateRandomBT(int maxLevel, int maxValue) {
+    return generate(1, maxLevel, maxValue);
+  }
+
+  private static Node generate(int i, int maxLevel, int maxValue) {
+    if (i > maxLevel || Math.random() > .5D) {
+      return null;
+    }
+    Node head = new Node((int) (Math.random() * maxValue));
+    head.left = generate(i + 1, maxLevel, maxValue);
+    head.right = generate(i + 1, maxLevel, maxValue);
+    return head;
+  }
+
+  static class Info {
+
+    boolean findA;
+    boolean findB;
+    Node ansNode;
+
+    public Info(boolean findA, boolean findB, Node ansNode) {
+      this.findA = findA;
+      this.findB = findB;
+      this.ansNode = ansNode;
     }
   }
 
