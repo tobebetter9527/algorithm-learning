@@ -7,10 +7,13 @@ import sun.awt.image.ImageWatched.Link;
 public class MyDemo {
 
   public static void main(String[] args) {
-    List<String> list = new LinkedList<>();
-    list.add(null);
-    System.out.println(list.size());
-
+    for (int i = 0; i < 10000000; i++) {
+      int i1 = (int) (Math.random() * 26);
+      if (i1 == 26) {
+        System.out.println("123");
+      }
+    }
+    System.out.println("654");
   }
 
 
