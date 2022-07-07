@@ -91,6 +91,10 @@ public class Code02_LessMoneySplitGold {
 
 
   public static void main(String[] args) {
+    int[] arr1 = {10, 20, 30, 40, 50};
+    int count = lessMoney2(arr1);
+    System.out.println(count);
+
     int maxLength = 5;
     int maxValue = 100;
     int testTimes = 1000000;
@@ -101,6 +105,7 @@ public class Code02_LessMoneySplitGold {
       }
     }
     System.out.println("done!");
+
   }
 
   private static int[] generateRandomArray(int maxLength, int maxValue) {
