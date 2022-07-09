@@ -87,7 +87,6 @@ public class Code05_UnionFind {
 
   }
 
-
   static class Node<T> {
 
     T value;
