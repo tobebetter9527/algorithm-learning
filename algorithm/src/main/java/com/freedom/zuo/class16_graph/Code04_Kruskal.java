@@ -30,7 +30,7 @@ public class Code04_Kruskal {
     uf.makeSets(graph.nodes.values());
 
     // 小根堆
-    PriorityQueue<Edge> heap = new PriorityQueue<>(new MyComparator());
+    PriorityQueue<Edge> heap = new PriorityQueue<>(new EdgeComparator());
     for (Edge edge : graph.edges) {
       heap.add(edge);
     }
@@ -106,7 +106,7 @@ public class Code04_Kruskal {
     }
   }
 
-  static class MyComparator implements Comparator<Edge> {
+  static class EdgeComparator implements Comparator<Edge> {
 
     @Override
     public int compare(Edge o1, Edge o2) {
