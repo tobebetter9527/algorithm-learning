@@ -13,7 +13,12 @@ import java.util.List;
  */
 public class Code04_PrintAllPermutations {
 
-
+  /**
+   * 打印一个字符串的全部排列
+   *
+   * @param str
+   * @return
+   */
   public static List<String> permutation1(String str) {
     if (str == null || str.length() == 0) {
       return new ArrayList<>();
@@ -49,11 +54,109 @@ public class Code04_PrintAllPermutations {
 
   // ---------------------------------- //
 
+  /**
+   * 打印一个字符串的全部排列
+   *
+   * @param str
+   * @return
+   */
+  public static List<String> permutation2(String str) {
+    if (str == null || str.length() == 0) {
+      return new ArrayList<>();
+    }
+
+    List<String> ans = new ArrayList<>();
+    process2(str.toCharArray(), 0, ans);
+
+    return ans;
+  }
+
+  /**
+   * @param chars 字符数组
+   * @param index 当前索引
+   * @param ans   答案
+   */
+  private static void process2(char[] chars, int index, List<String> ans) {
+    // 终止条件
+    if (index == chars.length) {
+      ans.add(String.valueOf(chars));
+      return;
+    }
+    for (int i = index; i < chars.length; i++) {
+      swap(chars, i, index);
+      process2(chars, index + 1, ans);
+      swap(chars, i, index);
+    }
+  }
+
+  private static void swap(char[] chars, int i, int j) {
+    char temp = chars[i];
+    chars[i] = chars[j];
+    chars[j] = temp;
+  }
+
+  // ---------------------------------- //
+
+  /**
+   * 打印一个字符串的全部排列，要求不要出现重复的排列
+   *
+   * @param str
+   * @return
+   */
+  public static List<String> permutation3(String str) {
+    if (str == null || str.length() == 0) {
+      return new ArrayList<>();
+    }
+
+    List<String> ans = new ArrayList<>();
+    boolean[] visited = new boolean[256];
+    process3(str.toCharArray(), 0, ans, visited);
+
+    return ans;
+  }
+
+  /**
+   * @param chars 字符数组
+   * @param index 当前索引
+   * @param ans   答案
+   */
+  private static void process3(char[] chars, int index, List<String> ans, boolean[] visited) {
+    // 终止条件
+    if (index == chars.length) {
+      ans.add(String.valueOf(chars));
+      return;
+    }
+    for (int i = index; i < chars.length; i++) {
+      // 访问过的字符就不在
+      if (!visited[chars[i]]) {
+        visited[i] = true;
+        swap(chars, i, index);
+        process3(chars, index + 1, ans, visited);
+        swap(chars, i, index);
+      }
+    }
+  }
+
+
   public static void main(String[] args) {
-    String str = "abcd";
+    String str = "abc";
 
     List<String> list = permutation1(str);
     for (String s : list) {
+      System.out.println(s);
+    }
+
+    System.out.println("=======================");
+
+    List<String> list2 = permutation2(str);
+    for (String s : list2) {
+      System.out.println(s);
+    }
+
+    System.out.println("=======================");
+
+    List<String> list3 = permutation3(str);
+    for (String s : list3) {
       System.out.println(s);
     }
   }
