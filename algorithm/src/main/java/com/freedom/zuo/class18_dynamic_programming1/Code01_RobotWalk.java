@@ -130,7 +130,6 @@ public class Code01_RobotWalk {
       // 第2到第n-1行
       for (int row = 2; row < n; row++) {
         dp[row][col] = dp[row + 1][col - 1] + dp[row - 1][col - 1];
-        ;
       }
 
       // 第n行
