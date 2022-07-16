@@ -9,9 +9,8 @@ import java.util.Set;
 public class MyDemo {
 
   public static void main(String[] args) {
-    int a = 126;
-    char b = (char) a;
-    System.out.println(b);
+    char b = '0';
+    System.out.println((int)b);
 
   }
 
