@@ -127,6 +127,7 @@ public class Code03_Coffee {
    */
   private static int bestTime2(int[] drinks, int a, int b) {
     int n = drinks.length;
+    // 隐藏的条件
     int maxFreeTime = 0;
     for (int i = 0; i < n; i++) {
       maxFreeTime = Math.max(maxFreeTime, drinks[i]) + a;
@@ -224,6 +225,10 @@ public class Code03_Coffee {
       int ans1 = right(arr, n, a, b);
       int ans2 = minTime1(arr, n, a, b);
       int ans3 = minTime2(arr, n, a, b);
+      System.out.println(ans1 + " " + ans2 + " " + ans3);
+      System.out.println("n=" + n + ", a=" + a + " ,b=" + b);
+      printArray(arr);
+      System.out.println("-------------------------");
       if (ans1 != ans2 || ans2 != ans3) {
         printArray(arr);
         System.out.println("n : " + n);
