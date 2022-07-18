@@ -80,6 +80,10 @@ public class Code01_MinPathSum {
       }
     }
 
+    System.out.println("-------");
+    printMatrix(dp);
+    System.out.println("-------");
+
     return dp[row - 1][col - 1];
   }
 
@@ -126,7 +130,6 @@ public class Code01_MinPathSum {
     System.out.println(minPathSum1(m));
     System.out.println(minPathSum2(m));
     System.out.println(minPathSum3(m));
-    System.out.println(minPathSum4(m));
 
   }
 
@@ -157,24 +160,4 @@ public class Code01_MinPathSum {
     }
   }
 
-
-  public static int minPathSum4(int[][] m) {
-    if (m == null || m.length == 0 || m[0] == null || m[0].length == 0) {
-      return 0;
-    }
-    int row = m.length;
-    int col = m[0].length;
-    int[] dp = new int[col];
-    dp[0] = m[0][0];
-    for (int j = 1; j < col; j++) {
-      dp[j] = dp[j - 1] + m[0][j];
-    }
-    for (int i = 1; i < row; i++) {
-      dp[0] += m[i][0];
-      for (int j = 1; j < col; j++) {
-        dp[j] = Math.min(dp[j - 1], dp[j]) + m[i][j];
-      }
-    }
-    return dp[col - 1];
-  }
 }
