@@ -28,7 +28,7 @@ public class Code02_CoinsWayEveryPaperDifferent {
    * @return
    */
   public static int coinWays(int[] arr, int aim) {
-    if (arr == null || arr.length == 0) {
+    if (arr == null || arr.length == 0 || aim < 0) {
       return 0;
     }
 
@@ -62,7 +62,7 @@ public class Code02_CoinsWayEveryPaperDifferent {
    * @return
    */
   public static int coinWays2(int[] arr, int aim) {
-    if (arr == null || arr.length == 0) {
+    if (arr == null || arr.length == 0 || aim < 0) {
       return 0;
     }
     int length = arr.length;
