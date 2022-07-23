@@ -75,7 +75,6 @@ public class Code01_SplitSumClosed {
         // 要当前位置的值
         int p2 = 0;
         if (arr[index] <= restSum) {
-          // 这里的arr[index]范围不定，每法子继续优化
           p2 = arr[index] + dp[index + 1][restSum - arr[index]];
         }
 
