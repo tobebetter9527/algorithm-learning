@@ -27,7 +27,8 @@ public class Code03_NQueens {
       return 0;
     }
     int[] record = new int[n];
-    return process(0, record, n);
+    int process = process(0, record, n);
+    return process;
   }
 
   /**
@@ -117,7 +118,7 @@ public class Code03_NQueens {
 
 
   public static void main(String[] args) {
-    int n = 15;
+    int n = 7;
 
     long start = System.currentTimeMillis();
     System.out.println(num2(n));
