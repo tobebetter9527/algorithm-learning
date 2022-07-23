@@ -9,8 +9,8 @@ import java.util.Set;
 public class MyDemo {
 
   public static void main(String[] args) {
-    char b = '0';
-    System.out.println((int)b);
+    int a = -1;
+    System.out.println(a /2);
 
   }
 
