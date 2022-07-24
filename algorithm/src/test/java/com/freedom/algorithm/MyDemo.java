@@ -9,8 +9,10 @@ import java.util.Set;
 public class MyDemo {
 
   public static void main(String[] args) {
-    int a = -1;
-    System.out.println(a /2);
+    StringBuilder builder = new StringBuilder();
+    builder.append("12");
+    builder.delete(0, builder.length());
+    System.out.println(builder);
 
   }
 

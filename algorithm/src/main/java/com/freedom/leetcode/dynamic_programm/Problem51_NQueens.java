@@ -27,9 +27,9 @@ public class Problem51_NQueens {
     // 执行到能放满皇后
     if (row == n) {
       List<String> list = new ArrayList<>(n);
+      StringBuilder str = new StringBuilder();
       for (int i = 0; i < n; i++) {
-        int index = record[i] - 1;
-        StringBuilder str = new StringBuilder();
+        int index = record[i];
         for (int j = 0; j < n; j++) {
           if (j != index) {
             str.append(".");
@@ -38,6 +38,7 @@ public class Problem51_NQueens {
           }
         }
         list.add(str.toString());
+        str.delete(0, str.length());
       }
       result.add(list);
 
@@ -48,7 +49,7 @@ public class Problem51_NQueens {
     // 从0列到n-1列
     for (int col = 0; col < n; col++) {
       if (isAvailable(record, row, col)) {
-        record[row] = col + 1;
+        record[row] = col;
         ways += process(row + 1, record, n, result);
       }
     }
@@ -60,7 +61,7 @@ public class Problem51_NQueens {
     // 这里注意只比较0到row-1行的
     for (int i = 0; i < row; i++) {
       // 同列或同在一条斜线上
-      if (record[i] - 1 == col || Math.abs(row - i) == Math.abs(col - record[i] + 1)) {
+      if (record[i] == col || Math.abs(row - i) == Math.abs(col - record[i])) {
         return false;
       }
     }
