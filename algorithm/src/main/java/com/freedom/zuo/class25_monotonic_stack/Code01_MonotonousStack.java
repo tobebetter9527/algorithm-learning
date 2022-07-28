@@ -1,4 +1,4 @@
-package com.freedom.zuo.class_monotonic_stack;
+package com.freedom.zuo.class25_monotonic_stack;
 
 import java.util.ArrayList;
 import java.util.List;
