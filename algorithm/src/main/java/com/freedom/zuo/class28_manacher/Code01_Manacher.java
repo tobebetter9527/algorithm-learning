@@ -54,6 +54,7 @@ public class Code01_Manacher {
 
     char[] chars = manacherString(str);
     // 回文半径数组，当前i位置的回文abiba,直径是5，半径就是（5+1)/2
+    // 以每个位置的字符为回文中心求出的回文半径长度
     int[] pArr = new int[chars.length];
     // 取得回文半径最右边界时的中心点C
     int C = -1;
