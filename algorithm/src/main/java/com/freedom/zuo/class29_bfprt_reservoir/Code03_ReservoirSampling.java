@@ -26,22 +26,22 @@ public class Code03_ReservoirSampling {
     for (int i = k; i < n; i++) {
       int j = random(i + 1);
       // 相等于k/j的概率
-      if (j < k) {
+      if (j <= k) {
         // 相等于1/k概率
-        int index = random(k);
+        int index = random(k) - 1;
         res[index] = arr[i];
       }
       // 等价写法
-//      if (j < k) {
-//        res[j] = arr[i];
-//      }
+      //      if (j <= k) {
+      //        res[j-1] = arr[i];
+      //      }
     }
 
     return res;
   }
 
   private static int random(int num) {
-    return (int) (Math.random() * num);
+    return (int) (Math.random() * num) + 1;
   }
 
   // -------------------------------------- //
