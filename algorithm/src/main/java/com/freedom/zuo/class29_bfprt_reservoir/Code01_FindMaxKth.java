@@ -16,7 +16,7 @@ import java.util.PriorityQueue;
  * @author tobebetter9527
  * @create 2022/08/05 10:04
  */
-public class Code01_FindMinKth {
+public class Code01_FindMaxKth {
 
   /**
    * 利用小根堆,时间复杂度O(N*logK)
