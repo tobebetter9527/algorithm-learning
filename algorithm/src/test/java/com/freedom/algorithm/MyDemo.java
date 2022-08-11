@@ -1,23 +1,16 @@
 package com.freedom.algorithm;
 
-import com.sun.org.apache.xpath.internal.NodeSet;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.PriorityQueue;
 
 public class MyDemo {
 
   public static void main(String[] args) {
-    StringBuilder builder = new StringBuilder();
-    builder.append("12");
-    builder.delete(0, builder.length());
-    System.out.println(builder);
+    int a = 100;
+    System.out.println(a/2);
+    System.out.println(Integer.MAX_VALUE);
+    PriorityQueue queue;
 
   }
-
 
 
 }
