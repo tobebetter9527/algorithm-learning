@@ -1,5 +1,6 @@
 package com.freedom.zuo.class35_ordered_table1;
 
+
 /**
  * An AVL tree is a balanced binary search tree, that is, a binary search tree in which the heights of left and right
  * <p>
@@ -46,8 +47,8 @@ public class Code01_AVLTreeMap {
       cur.left = left.right;
       left.right = cur;
       // update the cur node first,then the left node.
-      cur.h = Math.max(cur.left != null ? cur.left.h : 0, cur.right != null ? cur.right.h : 0) + 1;
-      left.h = Math.max(left.left != null ? left.left.h : 0, left.right != null ? left.right.h : 0) + 1;
+      cur.h = Math.max(getHeight(cur.left), getHeight(cur.right)) + 1;
+      left.h = Math.max(getHeight(left.left), getHeight(left.right)) + 1;
       return left;
     }
 
@@ -59,9 +60,13 @@ public class Code01_AVLTreeMap {
       cur.right = right.left;
       right.left = cur;
 
-      cur.h = Math.max(cur.left != null ? cur.left.h : 0, cur.right != null ? cur.right.h : 0);
-      right.h = Math.max(right.left != null ? right.left.h : 0, right.right != null ? right.right.h : 0);
+      cur.h = Math.max(getHeight(cur.left), getHeight(cur.right)) + 1;
+      right.h = Math.max(getHeight(right.left), getHeight(right.right)) + 1;
       return right;
+    }
+
+    private int getHeight(AVLNode<K, V> cur) {
+      return cur != null ? cur.h : 0;
     }
 
 
