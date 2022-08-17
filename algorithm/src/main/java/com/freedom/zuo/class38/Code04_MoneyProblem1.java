@@ -57,6 +57,9 @@ public class Code04_MoneyProblem1 {
 
   // ------------------------------------------------- //
 
+  /**
+   * function1的动态规划方法
+   */
   public static long function2(int[] d, int[] p) {
     int sum = 0;
     for (int i : d) {
@@ -66,7 +69,7 @@ public class Code04_MoneyProblem1 {
     long[][] dp = new long[d.length + 1][sum + 1];
 
     // 终止条件
-    for (int i = 0; i <=sum ; i++) {
+    for (int i = 0; i <= sum; i++) {
       dp[d.length][i] = 0L;
     }
 
@@ -91,12 +94,6 @@ public class Code04_MoneyProblem1 {
   }
 
   // ---- -------------- -------------- ------------------ //
-
-
-
-
-
-
 
   // ---- -------------- -------------- ------------------ //
 
