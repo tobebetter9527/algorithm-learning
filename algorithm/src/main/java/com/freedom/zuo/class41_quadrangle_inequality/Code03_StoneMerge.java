@@ -43,7 +43,8 @@ public class Code03_StoneMerge {
     for (int leftEnd = left; leftEnd < right; leftEnd++) {
       next = Math.min(next, process1(sums, left, leftEnd) + process1(sums, left + 1, right));
     }
-
+    // 假设数组{1，2，6，3），假设（1，2），（6，3）分别合并得到两个数，然后再合并，所得的分数最小，
+    // 分数计算： 3 + 6 + （3 + 6）,所以这里： substract(sums, left, right)
     return next + substract(sums, left, right);
   }
 
