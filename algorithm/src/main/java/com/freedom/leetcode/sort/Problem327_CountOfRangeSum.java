@@ -14,6 +14,8 @@ public class Problem327_CountOfRangeSum {
   /**
    * 前缀和，lower<= S(j) - S(i-1)<=upper, 转为S(j)-upper<=S(i-1)<=S(j)-lower
    *
+   * 实质：考察以j位置结尾的子数组累加和问题。
+   *
    * @param nums
    * @param lower
    * @param upper

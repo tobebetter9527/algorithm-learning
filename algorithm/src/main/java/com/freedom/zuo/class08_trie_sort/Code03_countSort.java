@@ -3,7 +3,7 @@ package com.freedom.zuo.class08_trie_sort;
 import java.util.Arrays;
 
 /**
- * 奇数排序，对数据有特殊要求，比如考试分数等
+ * 计数排序，对数据有特殊要求，比如考试分数等
  *
  * @author tobebetter9527
  * @create 2022/06/25 14:55
