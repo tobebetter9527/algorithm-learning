@@ -73,7 +73,7 @@ public class Code03_lowestAncestor {
     } else if (rightInfo.ansNode != null) {
       ansNode = rightInfo.ansNode;
     } else {
-      // 左右子树都没有答案，如果此时a和b都发现了，head节点必要最低公共祖先
+      // 左右子树都没有答案，如果此时a和b都发现了，head节点必是最低公共祖先
       if (findA && findB) {
         ansNode = head;
       }
@@ -133,7 +133,9 @@ public class Code03_lowestAncestor {
 
   static class Info {
 
+    // 是否找到A节点
     boolean findA;
+    // 是否找道B节点
     boolean findB;
     Node ansNode;
 

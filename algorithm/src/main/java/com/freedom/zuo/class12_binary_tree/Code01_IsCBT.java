@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * 是否完成二叉树
+ * 是否完全二叉树
  *
  * @author tobebetter9527
  * @create 2022/07/02 15:31

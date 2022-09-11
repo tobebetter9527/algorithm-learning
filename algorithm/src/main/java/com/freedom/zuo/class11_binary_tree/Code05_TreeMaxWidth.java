@@ -43,7 +43,7 @@ public class Code05_TreeMaxWidth {
         queue.add(cur.right);
       }
 
-      // 说明当前层遍历美有完成
+      // 说明当前层遍历没有完成
       if (curNodeLevel == curLevel) {
         curLevelNodes++;
       } else {
@@ -54,7 +54,7 @@ public class Code05_TreeMaxWidth {
       }
     }
 
-    // 最右边节点没有更下一层比较
+    // 最右边节点没有下一层可以比较
     return Math.max(max, curLevelNodes);
   }
 
