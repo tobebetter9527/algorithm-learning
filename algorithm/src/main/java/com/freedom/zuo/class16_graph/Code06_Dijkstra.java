@@ -51,7 +51,7 @@ public class Code06_Dijkstra {
    * 在未处理过的点中，取距离最小的点
    */
   private static Node getMinDistanceNode(Map<Node, Integer> distanceMap, Set<Node> processedSet) {
-    int minDistance = 0;
+    int minDistance = Integer.MAX_VALUE;
     Node minDistanceNode = null;
     for (Entry<Node, Integer> entry : distanceMap.entrySet()) {
       Node node = entry.getKey();

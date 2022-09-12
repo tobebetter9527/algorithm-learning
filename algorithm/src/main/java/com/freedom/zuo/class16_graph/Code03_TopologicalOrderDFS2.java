@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class Code03_TopologicalOrderDFS2 {
 
   /**
-   * 总体的思想是：根据点的深度，从高到低
+   * 总体的思想是：根据点的个数，从高到低
    * <p>
    * 拓扑序：有向图，无环
    *
@@ -26,7 +26,7 @@ public class Code03_TopologicalOrderDFS2 {
   public static List<DirectedGraphNode> topSort(List<DirectedGraphNode> graph) {
     Map<DirectedGraphNode, Record> map = new HashMap<>();
     for (DirectedGraphNode node : graph) {
-      f(node, map);
+      function(node, map);
     }
 
     List<Record> records = map.values().stream().collect(Collectors.toList());
@@ -35,14 +35,14 @@ public class Code03_TopologicalOrderDFS2 {
     return records.stream().map(x -> x.node).collect(Collectors.toList());
   }
 
-  private static Record f(DirectedGraphNode node, Map<DirectedGraphNode, Record> map) {
+  private static Record function(DirectedGraphNode node, Map<DirectedGraphNode, Record> map) {
     if (map.containsKey(node)) {
       return map.get(node);
     }
 
     int nodes = 0;
     for (DirectedGraphNode neighbor : node.neighbors) {
-      nodes += f(neighbor, map).nodes;
+      nodes += function(neighbor, map).nodes;
     }
 
     Record record = new Record(node, nodes + 1);
@@ -51,6 +51,7 @@ public class Code03_TopologicalOrderDFS2 {
   }
 
   static class MyComparator implements Comparator<Record> {
+
     @Override
     public int compare(Record o1, Record o2) {
       return o1.nodes == o2.nodes ? 0 : (o1.nodes > o2.nodes ? -1 : 1);

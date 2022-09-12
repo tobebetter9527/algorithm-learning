@@ -81,6 +81,7 @@ public class Code02_DFS {
 
     node5.nexts.add(node3);
 
+    node6.nexts.add(node5);
     node6.nexts.add(node7);
 
     dfs(root);

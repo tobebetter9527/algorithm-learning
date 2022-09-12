@@ -106,6 +106,7 @@ public class Code02_Hanoi {
   }
 
   // -----------------------------------------------------//
+
   static class Record {
 
     public boolean finish1;

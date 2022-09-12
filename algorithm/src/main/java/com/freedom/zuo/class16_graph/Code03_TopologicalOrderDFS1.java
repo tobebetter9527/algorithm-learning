@@ -26,7 +26,7 @@ public class Code03_TopologicalOrderDFS1 {
   public static List<DirectedGraphNode> topSort(List<DirectedGraphNode> graph) {
     Map<DirectedGraphNode, Record> map = new HashMap<>();
     for (DirectedGraphNode node : graph) {
-      f(node, map);
+      function(node, map);
     }
 
     List<Record> records = map.values().stream().collect(Collectors.toList());
@@ -35,14 +35,14 @@ public class Code03_TopologicalOrderDFS1 {
     return records.stream().map(x -> x.node).collect(Collectors.toList());
   }
 
-  private static Record f(DirectedGraphNode node, Map<DirectedGraphNode, Record> map) {
+  private static Record function(DirectedGraphNode node, Map<DirectedGraphNode, Record> map) {
     if (map.containsKey(node)) {
       return map.get(node);
     }
 
     int follow = 0;
     for (DirectedGraphNode neighbor : node.neighbors) {
-      follow = Math.max(follow, f(neighbor, map).deep);
+      follow = Math.max(follow, function(neighbor, map).deep);
     }
 
     Record record = new Record(node, follow + 1);
