@@ -63,7 +63,7 @@ public class Code03_NumberOfIslandsII {
       }
       int index1 = handleIndex(row1, col1);
       int index2 = handleIndex(row2, col2);
-      // 说明有节点为1，不需要进行合并
+      // 说明有节点为0，不需要进行合并，两个都为1才进行合并
       if (size[index1] == 0 || size[index2] == 0) {
         return;
       }
@@ -161,15 +161,15 @@ public class Code03_NumberOfIslandsII {
      * 17,20  ->  17_20
      */
     public int connect(int r, int c) {
-      String key = String.valueOf(r) + "_" + String.valueOf(c);
+      String key = r + "_" + c;
       if (!parent.containsKey(key)) {
         parent.put(key, key);
         size.put(key, 1);
         sets++;
-        String up = String.valueOf(r - 1) + "_" + String.valueOf(c);
-        String down = String.valueOf(r + 1) + "_" + String.valueOf(c);
-        String left = String.valueOf(r) + "_" + String.valueOf(c - 1);
-        String right = String.valueOf(r) + "_" + String.valueOf(c + 1);
+        String up = (r - 1) + "_" + c;
+        String down = (r + 1) + "_" + c;
+        String left = r + "_" + (c - 1);
+        String right = r + "_" + (c + 1);
         union(up, key);
         union(down, key);
         union(left, key);

@@ -44,7 +44,7 @@ public class Code02_NumberOfIslands {
     infect(grid, m, n, i, j - 1);
   }
 
-  // -----------------------------------------------//
+  // -----------------------------------------------------------------------------------------//
 
   public static int numIslands1(char[][] grid) {
     int row = grid.length;
