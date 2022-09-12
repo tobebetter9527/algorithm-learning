@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Set;
 
 /**
+ * 子序列，不连续，比如abc，子序列有a,b,c,ab,ac,bc,abc,""
+ *
  * 打印一个字符串的全部子序列
  * <p>
  * 打印一个字符串的全部子序列，要求不要出现重复字面值的子序列
@@ -87,7 +89,7 @@ public class Code03_PrintAllSubsquences {
   }
 
   public static void main(String[] args) {
-    String s = "acccc";
+    String s = "abc";
     List<String> subs = subs(s);
     for (String sub : subs) {
       System.out.println(sub);
