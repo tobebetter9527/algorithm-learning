@@ -27,8 +27,7 @@ public class Code03_NQueens {
       return 0;
     }
     int[] record = new int[n];
-    int process = process(0, record, n);
-    return process;
+    return process(0, record, n);
   }
 
   /**

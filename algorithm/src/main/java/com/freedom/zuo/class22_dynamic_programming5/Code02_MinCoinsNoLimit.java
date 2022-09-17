@@ -65,7 +65,7 @@ public class Code02_MinCoinsNoLimit {
     int n = arr.length;
     int[][] dp = new int[n + 1][aim + 1];
 
-    // 当前index已经超出数组大小,如果restAim为0，表示不需要货币了，不为了，说明找不到货币值凑出当前的restAim。
+    // 当前index已经超出数组大小,如果restAim为0，表示不需要货币了，不为0，说明找不到货币值凑出当前的restAim。
     dp[n][0] = 0;
     for (int restAim = 1; restAim <= aim; restAim++) {
       dp[n][restAim] = Integer.MAX_VALUE;

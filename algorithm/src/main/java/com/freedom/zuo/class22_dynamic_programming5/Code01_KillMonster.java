@@ -29,7 +29,7 @@ public class Code01_KillMonster {
       return 0;
     }
 
-    // k次打击，血量的组合共有多少种组合, 每次0-m，m+1种可能，k次就是（m+1)^k
+    // k次打击，血量的组合共有多少种组合, 每次0-m，共m+1种可能，k次就是（m+1)^k
     long all = (long) Math.pow(m + 1, k);
     long kill = process(k, m, n);
     return ((double) kill) / (double) all;
@@ -95,7 +95,7 @@ public class Code01_KillMonster {
           if (restN - i >= 0) {
             ways += dp[restK - 1][restN - i];
           } else {
-            // 这里注意restK-1，因为要打击一次，才边负数
+            // 这里注意restK-1，因为要打击一次，才变负数
             ways += (long) Math.pow(m + 1, restK - 1);
           }
         }
