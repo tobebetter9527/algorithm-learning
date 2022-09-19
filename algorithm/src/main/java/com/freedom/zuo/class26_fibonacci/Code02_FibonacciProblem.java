@@ -55,7 +55,7 @@ public class Code02_FibonacciProblem {
   // ----------------------------------------------- //
 
   /**
-   * 非递推版本
+   * 非递归版本
    *
    * @param n
    * @return

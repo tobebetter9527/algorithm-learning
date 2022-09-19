@@ -40,6 +40,13 @@ public class Code01_KMP {
     return y == match.length() ? x - y : -1;
   }
 
+  /**
+   * 每个位置的前缀和后缀最大的共同长度，比如123123d,d的前缀123，后缀123，则d位置值为3.
+   * <p>
+   * aaaaak, k位置的值为4，不能超过5.
+   *
+   * @param match
+   */
   private static int[] getNextArray(String match) {
     if (match.length() < 2) {
       return new int[]{-1};
