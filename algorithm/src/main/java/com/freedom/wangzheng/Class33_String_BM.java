@@ -16,7 +16,7 @@ public class Class33_String_BM {
    * @return 第一个匹配的下标，如果没有匹配返回-1
    */
   public static int bm(String str, String pattern) {
-    if (str == null || str.length() == 0 || pattern == null || pattern.length() == 0) {
+    if (str == null || pattern == null) {
       return -1;
     }
     return bm(str.toCharArray(), str.length(), pattern.toCharArray(), pattern.length());
@@ -130,16 +130,16 @@ public class Class33_String_BM {
 
 
   public static void main(String[] args) {
-//    int testTimes = 100000;
-//    int maxStrLength = 10;
-//    for (int i = 0; i < testTimes; i++) {
-//      String str = generateStr(maxStrLength);
-//      String pattern = generateStr(str.length() - 1);
-//      if (bm(str, pattern) != str.indexOf(pattern)) {
-//        System.out.println("wrong");
-//      }
-//    }
-//    System.out.println("done");
+    //    int testTimes = 100000;
+    //    int maxStrLength = 10;
+    //    for (int i = 0; i < testTimes; i++) {
+    //      String str = generateStr(maxStrLength);
+    //      String pattern = generateStr(str.length() - 1);
+    //      if (bm(str, pattern) != str.indexOf(pattern)) {
+    //        System.out.println("wrong");
+    //      }
+    //    }
+    //    System.out.println("done");
 
     String str = "aaaaaaaaaaa";
     String pattern = "aaab";

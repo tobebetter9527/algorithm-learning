@@ -1,5 +1,7 @@
 package com.freedom.zuo.class27_kmp;
 
+import com.sun.jmx.snmp.SnmpEngine;
+
 /**
  * KMP算法
  *
@@ -83,20 +85,26 @@ public class Code01_KMP {
     return String.valueOf(ans);
   }
 
+//  public static void main(String[] args) {
+//    int possibilities = 5;
+//    int strSize = 20;
+//    int matchSize = 5;
+//    int testTimes = 5000000;
+//    System.out.println("test begin");
+//    for (int i = 0; i < testTimes; i++) {
+//      String str = getRandomString(possibilities, strSize);
+//      String match = getRandomString(possibilities, matchSize);
+//      if (getIndexOf(str, match) != str.indexOf(match)) {
+//        System.out.println("Oops!");
+//      }
+//    }
+//    System.out.println("test finish");
+//  }
+
   public static void main(String[] args) {
-    int possibilities = 5;
-    int strSize = 20;
-    int matchSize = 5;
-    int testTimes = 5000000;
-    System.out.println("test begin");
-    for (int i = 0; i < testTimes; i++) {
-      String str = getRandomString(possibilities, strSize);
-      String match = getRandomString(possibilities, matchSize);
-      if (getIndexOf(str, match) != str.indexOf(match)) {
-        System.out.println("Oops!");
-      }
-    }
-    System.out.println("test finish");
+    String str = "aba";
+    int[] nextArray = getNextArray(str);
+    System.out.println(nextArray);
   }
 
 }
