@@ -142,7 +142,7 @@ public class Class33_String_BM {
     //    System.out.println("done");
 
     String str = "aaaaaaaaaaa";
-    String pattern = "aaab";
+    String pattern = "";
     int bm = bm(str, pattern);
     System.out.println(bm);
 
