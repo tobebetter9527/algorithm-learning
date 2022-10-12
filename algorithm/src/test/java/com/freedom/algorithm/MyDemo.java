@@ -1,19 +1,17 @@
 package com.freedom.algorithm;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map.Entry;
-import java.util.PriorityQueue;
-import java.util.concurrent.ConcurrentSkipListMap;
+import java.util.BitSet;
+import java.util.LinkedList;
 
 public class MyDemo {
 
   public static void main(String[] args) {
-    int i = "12".indexOf("122334");
-    System.out.println(i);
+    int[] nums = new int[1];
+    nums[0] = -2;
+    nums[0] = nums[0] ^ 2;
+    System.out.println(nums[0]);
+
   }
-
-
 
 
 }
