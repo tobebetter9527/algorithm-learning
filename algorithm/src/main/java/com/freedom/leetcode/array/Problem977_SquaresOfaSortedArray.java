@@ -95,7 +95,6 @@ public class Problem977_SquaresOfaSortedArray {
       for (int num : nums) {
         System.out.print(num + " ");
       }
-
     }
   }
 }
