@@ -3,6 +3,8 @@ package com.freedom.leetcode.linked_list;
 /**
  * 707. Design Linked List
  *
+ * 不算是良好的实现
+ *
  * @author tobebetter9527
  * @create 2022/10/16 10:12
  */
