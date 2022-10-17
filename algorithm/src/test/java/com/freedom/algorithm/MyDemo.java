@@ -1,5 +1,6 @@
 package com.freedom.algorithm;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class MyDemo {
@@ -12,12 +13,11 @@ public class MyDemo {
     nums[0] = nums[0] ^ 2;
     System.out.println(nums[0]);
 
-    LinkedList<String> list = new LinkedList<>();
+    ArrayList<String> list = new ArrayList<>();
+    list.get(-2);
     list.add(1, "");
     list.add("");
     list.remove(1);
-    list.get(2);
-    list.getFirst();
 
   }
 
