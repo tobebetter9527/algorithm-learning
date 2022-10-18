@@ -6,7 +6,7 @@ package com.freedom.leetcode.linked_list;
  * @author tobebetter9527
  * @create 2022/10/17 21:08
  */
-public class Problem_24_SwapNodesInPairs {
+public class Problem24_SwapNodesInPairs {
 
   /**
    * time complexity is O(n), space complexity is O(1).
