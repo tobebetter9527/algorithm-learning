@@ -51,6 +51,7 @@ public class Problem160_IntersectionOfTwoLinkedLists {
     return sizeA;
   }
 
+
   public ListNode getIntersectionNode2(ListNode headA, ListNode headB) {
     if (headA == null || headB == null) {
       return null;
