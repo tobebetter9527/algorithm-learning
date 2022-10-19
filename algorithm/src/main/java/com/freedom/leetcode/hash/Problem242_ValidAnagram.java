@@ -87,7 +87,7 @@ public class Problem242_ValidAnagram {
   }
 
   public static void main(String[] args) {
-    boolean anagram = isAnagram("anagram", "nagaram");
+    boolean anagram = isAnagram2("anagram", "nagaram");
     System.out.println(anagram);
   }
 
