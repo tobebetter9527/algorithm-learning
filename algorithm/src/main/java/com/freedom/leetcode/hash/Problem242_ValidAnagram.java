@@ -26,17 +26,11 @@ public class Problem242_ValidAnagram {
     int[] arr = new int[26];
 
     for (char c : s.toCharArray()) {
-      int index = c - 'a';
-      arr[index]++;
+      arr[c - 'a']++;
     }
 
     for (char c : t.toCharArray()) {
-      int index = c - 'a';
-      arr[index]--;
-    }
-
-    for (int num : arr) {
-      if (num != 0) {
+      if (--arr[c - 'a'] < 0) {
         return false;
       }
     }
@@ -84,10 +78,7 @@ public class Problem242_ValidAnagram {
 
     for (char c : t.toCharArray()) {
       map.put(c, map.getOrDefault(c, 0) - 1);
-    }
-
-    for (Integer value : map.values()) {
-      if (value != 0) {
+      if (map.get(c) < 0) {
         return false;
       }
     }
