@@ -1,4 +1,4 @@
-package com.freedom.leetcode;
+package com.freedom.leetcode.hash;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,6 +36,13 @@ public class Problem1_TwoSum {
     return null;
   }
 
+  /**
+   * time complexity is O(n), space complextiy is O(1).
+   *
+   * @param nums
+   * @param target
+   * @return
+   */
   public int[] twoSum2(int[] nums, int target) {
     int n = nums.length;
     Map<Integer, Integer> map = new HashMap<>(n);
