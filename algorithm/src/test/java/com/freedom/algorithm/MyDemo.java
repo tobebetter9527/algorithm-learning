@@ -6,8 +6,7 @@ import java.util.LinkedList;
 public class MyDemo {
 
   public static void main(String[] args) {
-   int n = 245;
-    System.out.println(n % 10);
+    System.out.println(Integer.MAX_VALUE);
 
   }
 

@@ -23,15 +23,18 @@ public class Problem15_3Sum {
    * @return
    */
   public static List<List<Integer>> threeSum(int[] nums) {
-    List<List<Integer>> ans = new ArrayList<>();
+    List<List<Integer>> triplets = new ArrayList<>();
     int n = nums.length;
     // 数据从小到大排序，那么三个数必须满足a<=b<=c
     Arrays.sort(nums);
 
-    for (int first = 0; first < n; first++) {
+    for (int first = 0; first < n - 2; first++) {
       // 如果第一个数大于0，不可能有三个数相加等于0，优化点
-      if (nums[first] > 0) {
-        return ans;
+      //      if (first + 2 < n && nums[first] + nums[first + 1] + nums[first + 2] > 0) {
+      //        return ans;
+      //      }
+      if (nums[first] + nums[first + 1] + nums[first + 2] > 0) {
+        return triplets;
       }
 
       // 第一层循环，如果当前和之前的数据相等，就跳过，比如-2，-2，1，1，2，2。index为1和0的都为-2，显然第二个-2可以跳过，
@@ -44,7 +47,7 @@ public class Problem15_3Sum {
       int target = -nums[first];
 
       // second肯定是大于first的
-      for (int second = first + 1; second < n; second++) {
+      for (int second = first + 1; second < n - 1; second++) {
         // -3,-2,-2,1,1,2. 当idxA=0,idxB=2时，显示idxB=1,已经枚举过了，都是b=-2.
         if (second > first + 1 && nums[second] == nums[second - 1]) {
           continue;
@@ -60,12 +63,12 @@ public class Problem15_3Sum {
         }
 
         if (nums[second] + nums[third] == target) {
-          ans.add(Arrays.asList(nums[first], nums[second], nums[third]));
+          triplets.add(Arrays.asList(nums[first], nums[second], nums[third]));
         }
       }
     }
 
-    return ans;
+    return triplets;
   }
 
 
@@ -73,7 +76,7 @@ public class Problem15_3Sum {
     List<List<Integer>> ans = new ArrayList<>();
     Arrays.sort(nums);
     int n = nums.length;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n - 2; i++) {
       if (nums[i] > 0) {
         return ans;
       }
@@ -108,7 +111,7 @@ public class Problem15_3Sum {
 
   public static void main(String[] args) {
     int[] nums = new int[]{-1, 0, 1, 2, -1, -4};
-    List<List<Integer>> lists = threeSum2(nums);
+    List<List<Integer>> lists = threeSum(nums);
     System.out.println(lists);
   }
 }
