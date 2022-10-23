@@ -9,8 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 public class MyDemo {
 
   public static void main(String[] args) {
-    char arr = ' ';
-    System.out.println(arr);
+    System.out.println("".indexOf(null));
 
   }
 
