@@ -10,9 +10,11 @@ public class Problem28_FindTheIndexOfTheFirstOccurrenceInaString {
 
   /**
    * 暴力法
+   * <p>
+   * time complexity is O(n*m), space complexity is O(1).l
    *
    * @param haystack length >= 1
-   * @param needle length >= 1
+   * @param needle   length >= 1
    * @return
    */
   public static int strStr(String haystack, String needle) {
@@ -25,7 +27,7 @@ public class Problem28_FindTheIndexOfTheFirstOccurrenceInaString {
     for (int i = 0; i < n; i++) {
       int index = i;
       boolean flag = true;
-      for (int j = 0 ; j < m; j++) {
+      for (int j = 0; j < m; j++) {
         if (arrN[index++] != arrM[j]) {
           flag = false;
           break;
@@ -37,6 +39,9 @@ public class Problem28_FindTheIndexOfTheFirstOccurrenceInaString {
     }
     return -1;
   }
+
+
+
 
 
   public static void main(String[] args) {
