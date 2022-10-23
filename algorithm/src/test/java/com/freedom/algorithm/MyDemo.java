@@ -1,14 +1,16 @@
 package com.freedom.algorithm;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import javax.sound.midi.Soundbank;
 import org.apache.commons.lang3.StringUtils;
 
 public class MyDemo {
 
   public static void main(String[] args) {
-    String abcde = StringUtils.reverse("abcdef");
-    System.out.println(abcde);
+    char arr = ' ';
+    System.out.println(arr);
 
   }
 

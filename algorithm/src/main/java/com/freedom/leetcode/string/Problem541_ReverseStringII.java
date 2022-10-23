@@ -8,6 +8,12 @@ package com.freedom.leetcode.string;
  */
 public class Problem541_ReverseStringII {
 
+  /**
+   *
+   * @param s
+   * @param k
+   * @return
+   */
   public static String reverseStr(String s, int k) {
     if (s == null || s.length() == 0) {
       return s;
