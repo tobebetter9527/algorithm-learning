@@ -112,6 +112,7 @@ public class Problem28_FindTheIndexOfTheFirstOccurrenceInaString {
     return badCharMap;
   }
 
+  // --------------------//
 
   /**
    * 暴力法
@@ -145,11 +146,65 @@ public class Problem28_FindTheIndexOfTheFirstOccurrenceInaString {
     return -1;
   }
 
+  // --------------------//
+
+  public static int kmp(String haystack, String needle) {
+    if (needle.length() == 0) {
+      return 0;
+    }
+    if (haystack.length() < needle.length()) {
+      return -1;
+    }
+    char[] mainChar = haystack.toCharArray();
+    int n = mainChar.length;
+    char[] modelChar = needle.toCharArray();
+    int m = modelChar.length;
+    int[] nexts = generateNexts(modelChar, m);
+
+    int k = -1;
+    for (int i = 0; i < n ; i++) {
+      while (k != -1 && mainChar[i] != modelChar[k + 1]) {
+        k = nexts[k];
+      }
+
+      if (mainChar[i] == modelChar[k + 1]) {
+        k++;
+      }
+
+      if (k + 1 == m) {
+        return i - k;
+      }
+    }
+    return -1;
+  }
+
+  private static int[] generateNexts(char[] modelChar, int m) {
+    int[] nexts = new int[m];
+    // 第一个索引就是为-1
+    nexts[0] = -1;
+    // k默认是-1；
+    int k = -1;
+    // 从1开始
+    for (int i = 1; i < m; i++) {
+      // 如果modelChar[k + 1] != modelChar[i]，往前找到已经匹配的位置
+      while (k != -1 && modelChar[k + 1] != modelChar[i]) {
+        k = nexts[k];
+      }
+
+      if (modelChar[k + 1] == modelChar[i]) {
+        k = k + 1;
+      }
+
+      nexts[i] = k;
+    }
+    return nexts;
+  }
+
 
   public static void main(String[] args) {
-    String haystack = "saadbutsad";
-    String needle = "sad";
-    int bm = bm(haystack, needle);
+    String haystack = "aaa";
+    String needle = "aaa";
+    int bm = kmp(haystack, needle);
     System.out.println(bm);
   }
 
