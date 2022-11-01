@@ -50,10 +50,42 @@ public class Problem459_RepeatedSubstringPattern {
     return false;
   }
 
+  /**
+   * time complexity is O(n), space comlexity is n(n).
+   * @param s
+   * @return
+   */
+  public static boolean repeatedSubstringPattern2(String s) {
+    if (s == null || s.length() == 0) {
+      return false;
+    }
+
+    int n = s.length();
+    int[] nexts = getNexts(s.toCharArray(), n);
+    return nexts[n - 1] != -1 && (n % (n - nexts[n - 1] - 1) == 0);
+  }
+
+  private static int[] getNexts(char[] chars, int n) {
+    int[] nexts = new int[n];
+    nexts[0] = -1;
+    int k = -1;
+    for (int i = 1; i < n; i++) {
+      while (k != -1 && chars[k + 1] != chars[i]) {
+        k = nexts[k];
+      }
+
+      if (chars[k + 1] == chars[i]) {
+        k++;
+      }
+      nexts[i] = k;
+    }
+    return nexts;
+  }
+
 
   public static void main(String[] args) {
-    String s = "babbabbabbabbab";
-    boolean b = repeatedSubstringPattern(s);
+    String s = "acdacdacd";
+    boolean b = repeatedSubstringPattern2(s);
     System.out.println(b);
   }
 }

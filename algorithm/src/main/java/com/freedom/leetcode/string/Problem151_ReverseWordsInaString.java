@@ -9,7 +9,7 @@ package com.freedom.leetcode.string;
 public class Problem151_ReverseWordsInaString {
 
   /**
-   * time complexity is O(n), space complexity is O(1).
+   * time complexity is O(n), space complexity is O(n).
    * <p>
    * 双指针做法
    */
