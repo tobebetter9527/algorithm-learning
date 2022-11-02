@@ -40,16 +40,11 @@ public class Problem232_implementQueueUsingStacks {
     }
 
     public void push(int x) {
-      if (!output.isEmpty()) {
-        while (!output.isEmpty()) {
-          input.push(output.pop());
-        }
-      }
       input.push(x);
     }
 
     public int pop() {
-      if (!input.isEmpty()) {
+      if (output.isEmpty()) {
         while (!input.isEmpty()) {
           output.push(input.pop());
         }
@@ -58,7 +53,7 @@ public class Problem232_implementQueueUsingStacks {
     }
 
     public int peek() {
-      if (!input.isEmpty()) {
+      if (output.isEmpty()) {
         while (!input.isEmpty()) {
           output.push(input.pop());
         }
