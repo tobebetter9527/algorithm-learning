@@ -21,6 +21,7 @@ public class Problem20_ValidParentheses {
 
   /**
    * 官方写法，时间复杂度：O(n)O(n)，空间复杂度：O(n + |\Sigma|)O(n+∣Σ∣)
+   *
    * @param s
    * @return
    */
@@ -51,6 +52,35 @@ public class Problem20_ValidParentheses {
     return stack.isEmpty();
   }
 
+  /**
+   * 11月2号写法
+   *
+   * @param s
+   * @return
+   */
+  public boolean isValid2(String s) {
+    if (s == null || s.length() % 2 == 1) {
+      return false;
+    }
+
+    Map<Character, Character> map = new HashMap<>();
+    map.put(')', '(');
+    map.put(']', '[');
+    map.put('}', '{');
+
+    Stack<Character> stack = new Stack<>();
+    for (char c : s.toCharArray()) {
+      if (c == '(' || c == '[' || c == '{') {
+        stack.push(c);
+      } else {
+        if (stack.isEmpty() || !stack.pop().equals(map.get(c))) {
+          return false;
+        }
+      }
+    }
+
+    return stack.isEmpty();
+  }
 
   public static boolean isValid(String s) {
     int length = s.length();
