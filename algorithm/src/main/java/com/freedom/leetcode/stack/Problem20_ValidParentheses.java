@@ -58,8 +58,8 @@ public class Problem20_ValidParentheses {
    * @param s
    * @return
    */
-  public boolean isValid2(String s) {
-    if (s == null || s.length() % 2 == 1) {
+  public static boolean isValid2(String s) {
+    if (s == null || (s.length() & 1) == 1) {
       return false;
     }
 
@@ -125,7 +125,7 @@ public class Problem20_ValidParentheses {
   public static void main(String[] args) {
     String s = "]";
 
-    System.out.println(isValid(s));
+    System.out.println(isValid2(s));
   }
 
 }
