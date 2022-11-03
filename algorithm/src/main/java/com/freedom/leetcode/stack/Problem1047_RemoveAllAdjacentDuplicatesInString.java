@@ -67,6 +67,32 @@ public class Problem1047_RemoveAllAdjacentDuplicatesInString {
     return String.valueOf(str, 0, index + 1);
   }
 
+  /**
+   * 进一步优化的结果
+   *
+   * @param s
+   * @return
+   */
+  public static String removeDuplicates3(String s) {
+    if (s == null || s.length() < 2) {
+      return s;
+    }
+
+    char[] chars = s.toCharArray();
+    int n = chars.length;
+    int index = -1;
+    for (int i = 0; i < n; i++) {
+      char c = chars[i];
+      if (index != -1 && chars[index] == c) {
+        index--;
+      } else {
+        chars[++index] = c;
+      }
+    }
+
+    return String.valueOf(chars, 0, index + 1);
+  }
+
   public static void main(String[] args) {
     String aback = removeDuplicates2("azxxzy");
     System.out.println(aback);
