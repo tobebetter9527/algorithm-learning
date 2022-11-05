@@ -13,6 +13,13 @@ import java.util.PriorityQueue;
  */
 public class Problem347_TopKFrequentElements {
 
+  /**
+   * time complexity is O(nlogk),space complexity is O(n).
+   *
+   * @param nums
+   * @param k
+   * @return
+   */
   public int[] topKFrequent(int[] nums, int k) {
     Map<Integer, Integer> map = new HashMap<>(nums.length);
     for (int num : nums) {
