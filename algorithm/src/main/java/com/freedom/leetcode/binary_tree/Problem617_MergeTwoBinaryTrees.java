@@ -5,6 +5,13 @@ package com.freedom.leetcode.binary_tree;
  */
 public class Problem617_MergeTwoBinaryTrees {
 
+  /**
+   * time complexity is O(n), space complexity is O(n)
+   *
+   * @param root1
+   * @param root2
+   * @return
+   */
   public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
     if (root1 == null && root2 == null) {
       return null;
