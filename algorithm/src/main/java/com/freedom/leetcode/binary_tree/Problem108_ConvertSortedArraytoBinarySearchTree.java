@@ -8,7 +8,11 @@ package com.freedom.leetcode.binary_tree;
  */
 public class Problem108_ConvertSortedArraytoBinarySearchTree {
 
-
+  /**
+   * time complexity is O(n), space complexity is O(logn)
+   * @param nums
+   * @return
+   */
   public static TreeNode sortedArrayToBST(int[] nums) {
     return process(nums, 0, nums.length - 1);
   }
