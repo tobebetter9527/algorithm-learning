@@ -22,30 +22,20 @@ public class Problem17_LetterCombinationsofaPhoneNumber {
     if (digits == null || digits.length() == 0) {
       return new ArrayList<>();
     }
-    Map<Character, List<Character>> map = new HashMap<>(8);
-    map.put('2', Arrays.asList('a', 'b', 'c'));
-    map.put('3', Arrays.asList('d', 'e', 'f'));
-    map.put('4', Arrays.asList('g', 'h', 'i'));
-    map.put('5', Arrays.asList('j', 'k', 'l'));
-    map.put('6', Arrays.asList('m', 'n', 'o'));
-    map.put('7', Arrays.asList('p', 'q', 'r', 's'));
-    map.put('8', Arrays.asList('t', 'u', 'v'));
-    map.put('9', Arrays.asList('w', 'x', 'y', 'z'));
-
-    char[] chars = digits.toCharArray();
-    handle(chars, map, 0, chars.length);
+    String[] arr = {"","", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    handle(digits, arr, 0);
     return list;
   }
 
-  private void handle(char[] chars, Map<Character, List<Character>> map, int index, int n) {
-    if (index == n) {
+  private void handle(String digits, String[] arr, int index) {
+    if (index == digits.length()) {
       list.add(sb.toString());
       return;
     }
-    List<Character> characters = map.get(chars[index]);
-    for (Character c : characters) {
-      sb.append(c);
-      handle(chars, map, index + 1, n);
+    String str = arr[digits.charAt(index) - '0'];
+    for (int j = 0; j < str.length(); j++) {
+      sb.append(str.charAt(j));
+      handle(digits, arr, index + 1);
       sb.deleteCharAt(sb.length() - 1);
     }
   }
