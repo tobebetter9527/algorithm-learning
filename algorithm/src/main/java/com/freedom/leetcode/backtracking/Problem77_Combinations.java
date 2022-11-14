@@ -12,11 +12,32 @@ import java.util.List;
  */
 public class Problem77_Combinations {
 
-
-
-
+  static List<List<Integer>> result = new LinkedList<>();
+  static LinkedList<Integer> path = new LinkedList<>();
 
   public static List<List<Integer>> combine(int n, int k) {
+    if (n < 1) {
+      return new ArrayList<>();
+    }
+    combineHelper(1, n, k);
+    return result;
+  }
+
+  private static void combineHelper(int start, int n, int k) {
+    if (path.size() == k) {
+      result.add(new ArrayList<>(path));
+      return;
+    }
+    // 减枝 i<= n - (k - path.size()) + 1
+    for (int i = start; i <= n; i++) {
+      path.add(i);
+      combineHelper(i + 1, n, k);
+      path.removeLast();
+    }
+  }
+
+
+  public static List<List<Integer>> combine2(int n, int k) {
     if (n < 1) {
       return new ArrayList<>();
     }
@@ -43,8 +64,8 @@ public class Problem77_Combinations {
   }
 
   public static void main(String[] args) {
-    int n = 1;
-    int k = 1;
+    int n = 4;
+    int k = 2;
     List<List<Integer>> combine = combine(n, k);
     System.out.println(combine);
   }
