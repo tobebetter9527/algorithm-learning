@@ -63,10 +63,6 @@ public class Problem46_Permutations {
     }
   }
 
-
-
-
-
   public static void main(String[] args) {
     int[] nums = {1, 2,3};
     Problem46_Permutations problem = new Problem46_Permutations();
