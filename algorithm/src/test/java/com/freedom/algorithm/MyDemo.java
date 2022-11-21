@@ -1,28 +1,34 @@
 package com.freedom.algorithm;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class MyDemo {
 
   public static void main(String[] args) {
-    double celsius = 122.11;
-    double[] doubles = convertTemperature(celsius);
-    for (double aDouble : doubles) {
-      System.out.println(aDouble);
+    int[] nums = {1,1,1,1,1};
+    System.out.println(unequalTriplets(nums));
+
+  }
+
+  public static int unequalTriplets(int[] nums) {
+    Arrays.sort(nums);
+    int n = nums.length;
+    int count = 0;
+    for (int i = 0; i < n; i++) {
+      for (int j = i + 1; j < n; j++) {
+        if (nums[i] != nums[j]) {
+          for (int k = j + 1; k < n; k++) {
+            if (nums[j] != nums[k]) {
+              count++;
+            }
+          }
+        }
+      }
     }
-
+    return count;
   }
 
-  public static double[] convertTemperature(double celsius) {
-    double[] ans = new double[2];
-    ans[0] = celsius + 273.15;
-    ans[1] = celsius * 1.80 + 32.00;
-    return ans;
-  }
 
-  
 
 
 }
