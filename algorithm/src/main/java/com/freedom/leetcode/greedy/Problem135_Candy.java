@@ -9,6 +9,8 @@ package com.freedom.leetcode.greedy;
 public class Problem135_Candy {
 
   /**
+   * time complexity is O(n), space complexity is O(n).
+   *
    * @param ratings
    * @return
    */
