@@ -3,53 +3,28 @@ package com.freedom.algorithm;
 public class MyDemo {
 
   public static void main(String[] args) {
-    String customers = "9999900000";
-    MyDemo demo = new MyDemo();
-    int i = demo.countPalindromes(customers);
+    int i = pivotInteger(1);
     System.out.println(i);
   }
 
-  int count = 0;
-  char[] str = new char[5];
-  int num = 1000 * 1000 * 1000 + 7;
-
-  public int countPalindromes(String s) {
-    if (s.length() < 5) {
-      return 0;
+  public static int pivotInteger(int n) {
+    if (n == 1) {
+      return 1;
     }
-    char[] chars = s.toCharArray();
-    process(chars, 0, 0);
-    return count % num;
-  }
 
-  private  void process(char[] chars, int index, int deep) {
-    if (deep == 5) {
-      if (isPalindrome(str)) {
-        count++;
-        count = count % num;
+    int[] sums = new int[n + 1];
+    sums[0] = 0;
+    for (int i = 1; i <= n; i++) {
+      sums[i] = sums[i -1] + i;
+    }
+
+    for (int i = n -1; i >= 0; i--) {
+      if (sums[n] - sums[i] == sums[i + 1]) {
+        return i + 1;
       }
-      return;
     }
-
-    for (int i = index; i + (5 - deep) <= chars.length; i++) {
-      str[deep] = chars[i];
-      process(chars, i + 1, deep + 1);
-    }
+    return -1;
   }
-
-  private boolean isPalindrome(char[] str) {
-    int start = 0;
-    int end = str.length - 1;
-    while (start <= end) {
-      if (str[start] != str[end]) {
-        return false;
-      }
-      start++;
-      end--;
-    }
-    return true;
-  }
-
 
 
 }
