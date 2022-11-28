@@ -3,8 +3,7 @@ package com.freedom.algorithm;
 public class MyDemo {
 
   public static void main(String[] args) {
-    int i = pivotInteger(1);
-    System.out.println(i);
+    int[] arr = {1,2};
   }
 
   public static int pivotInteger(int n) {
