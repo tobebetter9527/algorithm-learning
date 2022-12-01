@@ -6,11 +6,11 @@ package com.freedom.leetcode.binary_tree;
  * @author tobebetter9527
  * @create 2022/07/02 11:25
  */
-class TreeNode {
+public class TreeNode {
 
-  int val;
-  TreeNode left;
-  TreeNode right;
+  public int val;
+  public TreeNode left;
+  public TreeNode right;
 
   TreeNode() {
   }
