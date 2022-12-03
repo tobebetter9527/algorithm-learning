@@ -46,7 +46,12 @@ public class Problem416_PartitionEqualSubsetSum {
     return flag1 || flag2;
   }
 
-
+  /**
+   * time complexity is O(n*halfsum), space complexity is O(n*halfsum)
+   *
+   * @param nums
+   * @return
+   */
   public static boolean canPartition2(int[] nums) {
     if (nums == null || nums.length < 2) {
       return false;
@@ -77,18 +82,74 @@ public class Problem416_PartitionEqualSubsetSum {
     for (int index = n - 1; index >= 0; index--) {
       for (int restSum = 1; restSum <= halfSum; restSum++) {
         // 取当前的值
-        boolean flag1 = restSum - nums[index] >= 0 ? dp[index + 1][restSum - nums[index]] : false;
+        if (restSum - nums[index] >= 0) {
+          dp[index][restSum] = dp[index + 1][restSum - nums[index]];
+        }
         // 不取当前的值
-        boolean flag2 = dp[index + 1][restSum];
-        dp[index][restSum] = flag1 || flag2;
+        dp[index][restSum] |= dp[index + 1][restSum];
       }
     }
 
     return dp[0][halfSum];
   }
 
+  /**
+   * time complexity is O(n*halfsum), space complexity is O(halfsum)
+   *
+   * @param nums
+   * @return
+   */
+  public static boolean canPartition3(int[] nums) {
+    if (nums == null || nums.length < 2) {
+      return false;
+    }
+
+    int sum = 0;
+    for (int num : nums) {
+      sum += num;
+    }
+
+    // 奇数肯定是不能平分的
+    if ((sum & 1) == 1) {
+      return false;
+    }
+    // 取一半
+    int halfSum = sum >> 1;
+    int n = nums.length;
+    // 压缩空间
+    boolean[] dp = new boolean[halfSum + 1];
+    dp[0] = true;
+
+    // 错误写法
+    //    for (int index = n - 1; index >= 0; index--) {
+    //      for (int restSum = 1; restSum <= halfSum; restSum++) {
+    //        // 取当前的值
+    //        if (restSum - nums[index] >= 0) {
+    //          dp[restSum] |= dp[restSum - nums[index]];
+    //        }
+    //        // 不取当前的值
+    //        dp[restSum] |= dp[restSum];
+    //      }
+    //    }
+
+    for (int index = n - 1; index >= 0; index--) {
+      int num = nums[index];
+      // 这样写错误，不是上一行的状态
+      //      for (int restSum = num; restSum <= halfSum; restSum++) {
+      //        // 取当前的值
+      //        dp[restSum] |= dp[restSum - num];
+      //      }
+      for (int restSum = halfSum; restSum >= num; restSum--) {
+        // 取当前的值
+        dp[restSum] |= dp[restSum - num];
+      }
+    }
+
+    return dp[halfSum];
+  }
+
   public static void main(String[] args) {
-    int[] nums = {1, 5, 11, 5};
-    System.out.println(canPartition2(nums));
+    int[] nums = {1, 2, 5};
+    System.out.println(canPartition3(nums));
   }
 }
