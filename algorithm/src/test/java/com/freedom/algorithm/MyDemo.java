@@ -3,27 +3,23 @@ package com.freedom.algorithm;
 public class MyDemo {
 
   public static void main(String[] args) {
-    int[] arr = {1,2};
+    String sentence = "leetcode exercises sound delightful";
+    System.out.println(isCircularSentence(sentence));
   }
 
-  public static int pivotInteger(int n) {
-    if (n == 1) {
-      return 1;
-    }
+  public static boolean isCircularSentence(String sentence) {
+    String[] arr = sentence.split(" ");
+    int n = arr.length;
 
-    int[] sums = new int[n + 1];
-    sums[0] = 0;
-    for (int i = 1; i <= n; i++) {
-      sums[i] = sums[i -1] + i;
-    }
-
-    for (int i = n -1; i >= 0; i--) {
-      if (sums[n] - sums[i] == sums[i + 1]) {
-        return i + 1;
+    for (int i = 0; i < n - 1; i++) {
+      if (arr[i].charAt(arr[i].length() - 1) != arr[i + 1].charAt(0)) {
+        return false;
       }
     }
-    return -1;
+
+    return  arr[0].charAt(0) == arr[n - 1].charAt(arr[n - 1].length() - 1);
   }
+
 
 
 }
