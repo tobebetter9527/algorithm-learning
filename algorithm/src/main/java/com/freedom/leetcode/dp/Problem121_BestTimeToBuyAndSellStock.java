@@ -19,9 +19,27 @@ public class Problem121_BestTimeToBuyAndSellStock {
     return max;
   }
 
+  /**
+   * greedy, time complexity is O(n), space complexity is O(1)
+   *
+   * @param prices
+   * @return
+   */
+  public static int maxProfit2(int[] prices) {
+    int profit = 0;
+    int minPrice = prices[0];
+    for (int i = 1; i < prices.length; i++) {
+      if (prices[i] < minPrice) {
+        minPrice = prices[i];
+      } else if (prices[i] > minPrice) {
+        profit = Math.max(profit, prices[i] - minPrice);
+      }
+    }
+    return profit;
+  }
 
   public static void main(String[] args) {
-    int[] prices = {7,6,4,3,1};
-    System.out.println(maxProfit(prices));
+    int[] prices = {7, 6, 4, 3, 1};
+    System.out.println(maxProfit2(prices));
   }
 }
