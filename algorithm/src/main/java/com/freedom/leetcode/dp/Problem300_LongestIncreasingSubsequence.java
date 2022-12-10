@@ -57,9 +57,34 @@ public class Problem300_LongestIncreasingSubsequence {
     return dp[1][0];
   }
 
+  // ---------------------------- //
+
+  /**
+   * time complexity is O(n^2), space complexity is O(n).
+   *
+   * @param nums
+   * @return
+   */
+  public static int lengthOfLIS3(int[] nums) {
+    int n = nums.length;
+    int[] dp = new int[n];
+    dp[0] = 1;
+    int max = 1;
+    for (int i = 1; i < n; i++) {
+      dp[i] = 1;
+      for (int j = 0; j < i; j++) {
+        if (nums[i] > nums[j]) {
+          dp[i] = Math.max(dp[j] + 1, dp[i]);
+        }
+      }
+      max = Math.max(dp[i], max);
+    }
+    return max;
+  }
+
 
   public static void main(String[] args) {
     int[] nums = {10, 9, 2, 5, 3, 7, 101, 18};
-    System.out.println(lengthOfLIS2(nums));
+    System.out.println(lengthOfLIS3(nums));
   }
 }
