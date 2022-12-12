@@ -89,6 +89,13 @@ public class Problem115_DistinctSubsequences {
     return dp[0][0];
   }
 
+  /**
+   * time complexity is O(n*m), space complexity is O(m)
+   *
+   * @param s
+   * @param t
+   * @return
+   */
   public int numDistinct4(String s, String t) {
     if (s.length() == 0 || t.length() == 0 || s.length() < t.length()) {
       return 0;
