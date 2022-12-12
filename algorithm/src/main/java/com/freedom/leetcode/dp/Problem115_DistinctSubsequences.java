@@ -107,8 +107,9 @@ public class Problem115_DistinctSubsequences {
 
     // 从下到上，从左到右
     for (int idxs = n - 1; idxs >= 0; idxs--) {
+      char schar = s.charAt(idxs);
       for (int idxt = 0; idxt < m; idxt++) {
-        if (s.charAt(idxs) == t.charAt(idxt)) {
+        if (schar == t.charAt(idxt)) {
           dp[idxt] += dp[idxt + 1];
         }
       }
