@@ -60,7 +60,7 @@ public class Problem739_DailyTemperatures {
     for (int i = 0; i < n; i++) {
       int temperature = temperatures[i];
       while (index != -1 && temperatures[stack[index]] < temperature) {
-        Integer idx = stack[index--];
+        int idx = stack[index--];
         ans[idx] = i - idx;
       }
       stack[++index] = i;
