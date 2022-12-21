@@ -13,6 +13,11 @@ import java.util.Stack;
  */
 public class Code02_DFS {
 
+  /**
+   * 用栈实现dfs
+   *
+   * @param start
+   */
   public static void dfs(Node start) {
     if (start == null) {
       return;
@@ -38,6 +43,11 @@ public class Code02_DFS {
     }
   }
 
+  /**
+   * 用递归实现dfs
+   *
+   * @param start
+   */
   public static void dfs2(Node start) {
     if (start == null) {
       return;
