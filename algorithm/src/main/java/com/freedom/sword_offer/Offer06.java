@@ -51,6 +51,23 @@ public class Offer06 {
     return ans;
   }
 
+  public static int[] reversePrint3(ListNode head) {
+    if (head == null) {
+      return new int[0];
+    }
+    Stack<ListNode> stack = new Stack<>();
+    while (head != null) {
+      stack.push(head);
+      head = head.next;
+    }
+    int n = stack.size();
+    int[] ans = new int[n];
+    for (int i = 0; i < n; i++) {
+      ans[i] = stack.pop().val;
+    }
+    return ans;
+  }
+
   public static void main(String[] args) {
     ListNode node1 = new ListNode(1);
     ListNode node2 = new ListNode(2);
