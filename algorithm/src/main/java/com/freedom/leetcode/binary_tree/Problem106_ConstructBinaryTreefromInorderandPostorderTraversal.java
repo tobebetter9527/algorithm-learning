@@ -17,11 +17,10 @@ public class Problem106_ConstructBinaryTreefromInorderandPostorderTraversal {
     for (int i = 0; i < inorder.length; i++) {
       inMap.put(inorder[i], i);
     }
-    return process(inMap, 0, inorder.length - 1, inorder, 0, postorder.length - 1, postorder);
+    return process(inMap, 0, inorder.length - 1, 0, postorder.length - 1, postorder);
   }
 
   private static TreeNode process(Map<Integer, Integer> inMap, int inS, int inE,
-      int[] inorder,
       int postS, int postE, int[] postorder) {
     if (inS > inE || postS > postE) {
       return null;
@@ -33,9 +32,9 @@ public class Problem106_ConstructBinaryTreefromInorderandPostorderTraversal {
 
     Integer inRootIndex = inMap.get(value);
 
-    root.left = process(inMap, inS, inRootIndex - 1, inorder, postS, postS + (inRootIndex - 1 - inS),
+    root.left = process(inMap, inS, inRootIndex - 1, postS, postS + (inRootIndex - 1 - inS),
         postorder);
-    root.right = process(inMap, inRootIndex + 1, inE, inorder, postS + (inRootIndex - 1 - inS) + 1,
+    root.right = process(inMap, inRootIndex + 1, inE, postS + (inRootIndex - 1 - inS) + 1,
         postE - 1, postorder);
 
     return root;
