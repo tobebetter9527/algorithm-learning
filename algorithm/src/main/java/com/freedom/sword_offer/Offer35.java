@@ -27,8 +27,7 @@ public class Offer35 {
       Node random = cur.random;
       Node copyCur = cur.next;
       if (random != null) {
-        Node copyRandom = random.next;
-        copyCur.random = copyRandom;
+        copyCur.random = random.next;
       }
       cur = copyCur.next;
     }
