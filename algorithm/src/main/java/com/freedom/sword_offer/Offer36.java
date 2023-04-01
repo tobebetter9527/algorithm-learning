@@ -5,22 +5,37 @@ import java.util.List;
 
 public class Offer36 {
 
+  Node pre, head;
+
   public Node treeToDoublyList(Node root) {
     if (root == null) {
       return null;
     }
-
-    List<Node> list = new ArrayList<>();
-    inOrder(list, root);
-
-    int n = list.size();
-    for (int i = 0; i < n; i++) {
-      Node node = list.get(i);
-      node.left = list.get((i - 1 + n) % n);
-      node.right = list.get((i + 1) % n);
-    }
-    return list.get(0);
+    dfs(root);
+    head.left = pre;
+    pre.right = head;
+    return head;
   }
+
+  /**
+   * 中序遍历
+   */
+  private void dfs(Node cur) {
+    if (cur == null) {
+      return;
+    }
+    dfs(cur.left);
+    if (pre != null) {
+      cur.left = pre;
+      pre.right = cur;
+    } else {
+      // pre为null，说明已经到最左边，可以作为头节点
+      head = cur;
+    }
+    pre = cur;
+    dfs(cur.right);
+  }
+
 
   /**
    * 代码更简洁
