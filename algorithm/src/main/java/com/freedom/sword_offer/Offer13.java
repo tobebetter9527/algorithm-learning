@@ -22,7 +22,7 @@ public class Offer13 {
     }
     // 标记为访问过
     visited[row][col] = true;
-    if (!isConfirmed(row, col)) {
+    if (isConfirmed(row, col)) {
       return 0;
     }
 
@@ -36,7 +36,7 @@ public class Offer13 {
   }
 
   private boolean isConfirmed(int row, int i) {
-    return calculate(row) + calculate(i) <= k;
+    return calculate(row) + calculate(i) > k;
   }
 
   public static int calculate(int num) {
