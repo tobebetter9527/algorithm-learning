@@ -22,21 +22,17 @@ public class Offer13 {
     }
     // 标记为访问过
     visited[row][col] = true;
-    int sum = 0;
-    if (isConfirmed(row + 1, col)) {
-      sum += dfs(row + 1, col);
-    }
-    if (isConfirmed(row - 1, col)) {
-      sum += dfs(row - 1, col);
-    }
-    if (isConfirmed(row, col + 1)) {
-      sum += dfs(row, col + 1);
-    }
-    if (isConfirmed(row, col - 1)) {
-      sum += dfs(row, col - 1);
+    if (!isConfirmed(row, col)) {
+      return 0;
     }
 
-    return isConfirmed(row, col) ? sum + 1 : sum;
+    int sum = 0;
+    sum += dfs(row + 1, col);
+    sum += dfs(row - 1, col);
+    sum += dfs(row, col + 1);
+    sum += dfs(row, col - 1);
+
+    return sum + 1;
   }
 
   private boolean isConfirmed(int row, int i) {
