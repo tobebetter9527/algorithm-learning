@@ -70,6 +70,7 @@ public class Offer67 {
   static class Automation {
     public int sign = 1;
     public long res = 0;
+    private int boundary = Integer.MAX_VALUE / 10;
     private String state = "start";
     private Map<String, String[]> table = new HashMap<String, String[]>() {{
       put("start", new String[]{"start", "signed", "in_number", "end"});
@@ -86,8 +87,16 @@ public class Offer67 {
       }
 
       if ("in_number".equals(state)) {
+        // 这种算法时间复杂度极端情况还是O(n)。
+        // res = res * 10 + (c - '0');
+        // res = sign == 1 ? Math.min(res, (long) Integer.MAX_VALUE) : Math.min(res, -(long) Integer.MIN_VALUE);
+
+        // 优化结果,时间复杂度为O(1)
+        if (res > boundary || (res == boundary && c > '7')) {
+          res = sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+          return false;
+        }
         res = res * 10 + (c - '0');
-        res = sign == 1 ? Math.min(res, (long) Integer.MAX_VALUE) : Math.min(res, -(long) Integer.MIN_VALUE);
       }
 
       if ("signed".equals(state)) {
@@ -112,7 +121,7 @@ public class Offer67 {
 
   public static void main(String[] args) {
     Offer67 offer67 = new Offer67();
-    int res = offer67.strToInt2(" h  43454534534534534534534sa");
+    int res = offer67.strToInt2("   +4354535434354434534534sa");
     System.out.println(res);
 
   }
