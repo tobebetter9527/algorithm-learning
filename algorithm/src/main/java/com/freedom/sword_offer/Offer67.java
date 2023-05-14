@@ -1,7 +1,9 @@
 package com.freedom.sword_offer;
 
-public class Offer67 {
+import java.util.HashMap;
+import java.util.Map;
 
+public class Offer67 {
 
   public int strToInt(String str) {
     if (str == null) {
@@ -44,5 +46,83 @@ public class Offer67 {
     }
 
     return res * sign;
+  }
+
+
+  public int strToInt2(String str) {
+    if (str == null) {
+      return 0;
+    }
+    str = str.trim();
+    if (str.length() == 0) {
+      return 0;
+    }
+
+    Automation automation = new Automation();
+    for (char c : str.toCharArray()) {
+      if (!automation.get(c)) {
+        break;
+      }
+    }
+    return automation.sign * (int) automation.res;
+  }
+
+  static class Automation {
+    public int sign = 1;
+    public long res = 0;
+    private int boundary = Integer.MAX_VALUE / 10;
+    private String state = "start";
+    private Map<String, String[]> table = new HashMap<String, String[]>() {{
+      put("start", new String[]{"start", "signed", "in_number", "end"});
+      put("signed", new String[]{"end", "end", "in_number", "end"});
+      put("in_number", new String[]{"end", "end", "in_number", "end"});
+      put("end", new String[]{"end", "end", "end", "end"});
+    }};
+
+    public boolean get(char c) {
+      state = table.get(state)[getIndex(c)];
+      // 如果是end状态，可以提前结束循环
+      if ("end".equals(state)) {
+        return false;
+      }
+
+      if ("in_number".equals(state)) {
+        // 这种算法时间复杂度极端情况还是O(n)。
+        // res = res * 10 + (c - '0');
+        // res = sign == 1 ? Math.min(res, (long) Integer.MAX_VALUE) : Math.min(res, -(long) Integer.MIN_VALUE);
+
+        // 优化结果,时间复杂度为O(1)
+        if (res > boundary || (res == boundary && c > '7')) {
+          res = sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+          return false;
+        }
+        res = res * 10 + (c - '0');
+      }
+
+      if ("signed".equals(state)) {
+        sign = c == '+' ? 1 : -1;
+      }
+
+      return true;
+    }
+
+    private int getIndex(char c) {
+      if (' ' == c) {
+        return 0;
+      } else if ('+' == c || '-' == c) {
+        return 1;
+      } else if (Character.isDigit(c)) {
+        return 2;
+      } else {
+        return 3;
+      }
+    }
+  }
+
+  public static void main(String[] args) {
+    Offer67 offer67 = new Offer67();
+    int res = offer67.strToInt2("   +4354535434354434534534sa");
+    System.out.println(res);
+
   }
 }
