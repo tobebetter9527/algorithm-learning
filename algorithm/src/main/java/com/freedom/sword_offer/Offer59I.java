@@ -7,6 +7,38 @@ public class Offer59I {
 
   public static int[] maxSlidingWindow(int[] nums, int k) {
     int length = nums.length;
+    int[] res = new int[length - k + 1];
+    int idx = 0;
+    Deque<Integer> deque = new LinkedList<>();
+    int left = -1;
+    // 构造窗口 right -left = k
+    for (int right = 0; right < k; right++) {
+      while (!deque.isEmpty() && nums[deque.peekLast()] < nums[right]) {
+        deque.pollLast();
+      }
+      deque.addLast(right);
+    }
+    res[idx++] = nums[deque.peekFirst()];
+
+    for (int right = k; right < length; right++) {
+      while (!deque.isEmpty() && nums[deque.peekLast()] < nums[right]) {
+        deque.pollLast();
+      }
+      deque.addLast(right);
+
+      left++;
+      if (deque.peekFirst() <= left) {
+        deque.pollFirst();
+      }
+
+      res[idx++] = nums[deque.peekFirst()];
+    }
+    return res;
+  }
+
+
+  public static int[] maxSlidingWindow2(int[] nums, int k) {
+    int length = nums.length;
     // 返回值
     int[] res = new int[length - k + 1];
     int idx = 0, left = -1;
