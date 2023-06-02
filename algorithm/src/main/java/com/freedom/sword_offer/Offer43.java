@@ -3,6 +3,7 @@ package com.freedom.sword_offer;
 public class Offer43 {
     /**
      * 思路题解：https://leetcode.cn/problems/1nzheng-shu-zhong-1chu-xian-de-ci-shu-lcof/solutions/757536/dong-hua-mo-ni-wo-tai-xi-huan-zhe-ge-ti-vxzwc/?envType=featured-list&envId=xb9nqhhg
+     * time complexity is O(logn),space complexity is O(1)
      *
      * @param n
      * @return
