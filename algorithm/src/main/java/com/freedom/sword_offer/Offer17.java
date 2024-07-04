@@ -8,21 +8,21 @@ package com.freedom.sword_offer;
  */
 public class Offer17 {
 
-  public static int[] printNumbers(int n) {
-    int num = (int) Math.pow(10, n) - 1;
-    int[] ans = new int[num];
-    for (int i = 0; i < num; i++) {
-      ans[i] = i + 1;
+    public static int[] printNumbers(int n) {
+        int num = (int) Math.pow(10, n) - 1;
+        int[] ans = new int[num];
+        for (int i = 0; i < num; i++) {
+            ans[i] = i + 1;
+        }
+        return ans;
     }
-    return ans;
-  }
 
-  public static void main(String[] args) {
-    int n = 1;
-    int[] ints = printNumbers(n);
-    System.out.println(ints);
-    for (int ans : ints) {
-      System.out.println(ans);
+    public static void main(String[] args) {
+        int n = 1;
+        int[] ints = printNumbers(n);
+        System.out.println(ints);
+        for (int ans : ints) {
+            System.out.println(ans);
+        }
     }
-  }
 }

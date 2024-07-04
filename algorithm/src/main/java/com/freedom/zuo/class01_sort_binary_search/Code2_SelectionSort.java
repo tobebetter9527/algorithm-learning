@@ -18,102 +18,102 @@ import java.util.Arrays;
  */
 public class Code2_SelectionSort {
 
-  public static void selectionSort(int[] arr) {
-    if (arr == null || arr.length < 2) {
-      return;
-    }
-
-    for (int i = 0; i < arr.length; i++) {
-      int minIndex = i;
-      for (int j = i + 1; j < arr.length; j++) {
-        if (arr[minIndex] > arr[j]) {
-          minIndex = j;
+    public static void selectionSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
         }
-      }
-      swap(arr, i, minIndex);
-    }
-  }
 
-  private static void swap(int[] arr, int i, int j) {
-    int temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
-  }
+        for (int i = 0; i < arr.length; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[minIndex] > arr[j]) {
+                    minIndex = j;
+                }
+            }
+            swap(arr, i, minIndex);
+        }
+    }
 
-  private static int[] generateRandomArray(int maxSize, int range) {
-    int length = (int) (Math.random() * (maxSize + 1));
-    int[] arr = new int[length];
-    for (int i = 0; i < length; i++) {
-      arr[i] = generateRandomNum(range);
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
 
-    }
-    return arr;
-  }
+    private static int[] generateRandomArray(int maxSize, int range) {
+        int length = (int) (Math.random() * (maxSize + 1));
+        int[] arr = new int[length];
+        for (int i = 0; i < length; i++) {
+            arr[i] = generateRandomNum(range);
 
-  private static int generateRandomNum(int range) {
-    return (int) (Math.random() * range - Math.random() * range);
-  }
+        }
+        return arr;
+    }
 
-  private static int[] copyArray(int[] arr) {
-    if (arr == null) {
-      return null;
+    private static int generateRandomNum(int range) {
+        return (int) (Math.random() * range - Math.random() * range);
     }
-    int[] copy = new int[arr.length];
-    for (int i = 0; i < arr.length; i++) {
-      copy[i] = arr[i];
-    }
-    return arr;
-  }
 
-  private static boolean isEqual(int[] arr1, int[] arr2) {
-    if (arr1 == null && arr2 != null) {
-      return false;
+    private static int[] copyArray(int[] arr) {
+        if (arr == null) {
+            return null;
+        }
+        int[] copy = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            copy[i] = arr[i];
+        }
+        return arr;
     }
-    if (arr1 != null && arr2 == null) {
-      return false;
-    }
-    if (arr1 == null && arr2 == null) {
-      return true;
-    }
-    if (arr1.length != arr2.length) {
-      return false;
-    }
-    for (int i = 0; i < arr1.length; i++) {
-      if (arr1[i] != arr2[i]) {
-        return false;
-      }
-    }
-    return true;
-  }
 
-  private static void print(int[] arr) {
-    if (arr == null) {
-      System.out.println("arr is null");
+    private static boolean isEqual(int[] arr1, int[] arr2) {
+        if (arr1 == null && arr2 != null) {
+            return false;
+        }
+        if (arr1 != null && arr2 == null) {
+            return false;
+        }
+        if (arr1 == null && arr2 == null) {
+            return true;
+        }
+        if (arr1.length != arr2.length) {
+            return false;
+        }
+        for (int i = 0; i < arr1.length; i++) {
+            if (arr1[i] != arr2[i]) {
+                return false;
+            }
+        }
+        return true;
     }
-    System.out.println("--------");
-    for (int i : arr) {
-      System.out.print(i + " ");
+
+    private static void print(int[] arr) {
+        if (arr == null) {
+            System.out.println("arr is null");
+        }
+        System.out.println("--------");
+        for (int i : arr) {
+            System.out.print(i + " ");
+        }
     }
-  }
 
 
-  public static void main(String[] args) {
-    int size = 20, range = 100, testTimes = 1000000;
-    boolean flag = false;
-    for (int i = 0; i < testTimes; i++) {
-      int[] arr = generateRandomArray(size, range);
-      int[] copyArray = copyArray(arr);
-      selectionSort(arr);
-      Arrays.sort(copyArray);
+    public static void main(String[] args) {
+        int size = 20, range = 100, testTimes = 1000000;
+        boolean flag = false;
+        for (int i = 0; i < testTimes; i++) {
+            int[] arr = generateRandomArray(size, range);
+            int[] copyArray = copyArray(arr);
+            selectionSort(arr);
+            Arrays.sort(copyArray);
 
-      if (!isEqual(arr, copyArray)) {
-        flag = true;
-        System.out.println("selection sort error");
-        print(arr);
-        print(copyArray);
-      }
+            if (!isEqual(arr, copyArray)) {
+                flag = true;
+                System.out.println("selection sort error");
+                print(arr);
+                print(copyArray);
+            }
+        }
+        System.out.println(flag ? "bad" : "good");
     }
-    System.out.println(flag ? "bad" : "good");
-  }
 
 }

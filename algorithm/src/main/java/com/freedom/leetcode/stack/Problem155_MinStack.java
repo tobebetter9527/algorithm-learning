@@ -17,38 +17,38 @@ import java.util.LinkedList;
  */
 public class Problem155_MinStack {
 
-  private static class MinStack {
+    private static class MinStack {
 
-    Deque<Integer> dataStack;
-    Deque<Integer> minStack;
+        Deque<Integer> dataStack;
+        Deque<Integer> minStack;
 
-    public MinStack() {
-      dataStack = new LinkedList<>();
-      minStack = new LinkedList<>();
+        public MinStack() {
+            dataStack = new LinkedList<>();
+            minStack = new LinkedList<>();
+        }
+
+        public void push(int val) {
+            dataStack.push(val);
+            if (minStack.isEmpty()) {
+                minStack.push(val);
+            } else {
+                minStack.push(Math.min(minStack.peek(), val));
+            }
+        }
+
+        public void pop() {
+            if (!dataStack.isEmpty()) {
+                dataStack.pop();
+                minStack.pop();
+            }
+        }
+
+        public int top() {
+            return dataStack.peek();
+        }
+
+        public int getMin() {
+            return minStack.peek();
+        }
     }
-
-    public void push(int val) {
-      dataStack.push(val);
-      if (minStack.isEmpty()) {
-        minStack.push(val);
-      } else {
-        minStack.push(Math.min(minStack.peek(), val));
-      }
-    }
-
-    public void pop() {
-      if (!dataStack.isEmpty()){
-        dataStack.pop();
-        minStack.pop();
-      }
-    }
-
-    public int top() {
-      return dataStack.peek();
-    }
-
-    public int getMin() {
-      return minStack.peek();
-    }
-  }
 }

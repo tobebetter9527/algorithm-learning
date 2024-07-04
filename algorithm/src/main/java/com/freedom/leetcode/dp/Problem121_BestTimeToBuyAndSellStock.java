@@ -8,38 +8,38 @@ package com.freedom.leetcode.dp;
  */
 public class Problem121_BestTimeToBuyAndSellStock {
 
-  public static int maxProfit(int[] prices) {
-    int max = 0;
-    int n = prices.length;
-    for (int i = 0; i < n - 1; i++) {
-      for (int j = i + 1; j < n; j++) {
-        max = Math.max(max, prices[j] - prices[i]);
-      }
+    public static int maxProfit(int[] prices) {
+        int max = 0;
+        int n = prices.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                max = Math.max(max, prices[j] - prices[i]);
+            }
+        }
+        return max;
     }
-    return max;
-  }
 
-  /**
-   * greedy, time complexity is O(n), space complexity is O(1)
-   *
-   * @param prices
-   * @return
-   */
-  public static int maxProfit2(int[] prices) {
-    int profit = 0;
-    int minPrice = prices[0];
-    for (int i = 1; i < prices.length; i++) {
-      if (prices[i] < minPrice) {
-        minPrice = prices[i];
-      } else if (prices[i] > minPrice) {
-        profit = Math.max(profit, prices[i] - minPrice);
-      }
+    /**
+     * greedy, time complexity is O(n), space complexity is O(1)
+     *
+     * @param prices
+     * @return
+     */
+    public static int maxProfit2(int[] prices) {
+        int profit = 0;
+        int minPrice = prices[0];
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] < minPrice) {
+                minPrice = prices[i];
+            } else if (prices[i] > minPrice) {
+                profit = Math.max(profit, prices[i] - minPrice);
+            }
+        }
+        return profit;
     }
-    return profit;
-  }
 
-  public static void main(String[] args) {
-    int[] prices = {7, 6, 4, 3, 1};
-    System.out.println(maxProfit2(prices));
-  }
+    public static void main(String[] args) {
+        int[] prices = {7, 6, 4, 3, 1};
+        System.out.println(maxProfit2(prices));
+    }
 }

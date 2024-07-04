@@ -20,36 +20,36 @@ package com.freedom.zuo.class38;
  */
 public class Code03_MSumToN {
 
-  public static boolean isMSum1(int num) {
-    for (int start = 1; start < num; start++) {
-      int sum = start;
-      for (int index = start + 1; index < num; index++) {
-        if (sum + index > num) {
-          break;
+    public static boolean isMSum1(int num) {
+        for (int start = 1; start < num; start++) {
+            int sum = start;
+            for (int index = start + 1; index < num; index++) {
+                if (sum + index > num) {
+                    break;
+                }
+
+                if (sum + index == num) {
+                    return true;
+                }
+                sum += index;
+            }
         }
+        return false;
+    }
 
-        if (sum + index == num) {
-          return true;
+    public static boolean isMSum(int num) {
+        // return (num & (~num + 1)) == num;
+        //  return (num & (-num )) == num;
+        return (num & (num - 1)) != 0;
+    }
+
+
+    public static void main(String[] args) {
+        for (int i = 0; i < 256; i++) {
+            // System.out.println(i + ": " + isMSum1(i));
+            if (isMSum1(i) != isMSum(i)) {
+                System.out.println("wrong");
+            }
         }
-        sum += index;
-      }
     }
-    return false;
-  }
-
-  public static boolean isMSum(int num) {
-   // return (num & (~num + 1)) == num;
-    //  return (num & (-num )) == num;
-    return (num & (num - 1)) != 0;
-  }
-
-
-  public static void main(String[] args) {
-    for (int i = 0; i < 256; i++) {
-      // System.out.println(i + ": " + isMSum1(i));
-      if (isMSum1(i) != isMSum(i)) {
-        System.out.println("wrong");
-      }
-    }
-  }
 }

@@ -15,18 +15,18 @@ package com.freedom.leetcode.bit_manipulation;
  */
 public class Problem137_SingleNumber {
 
-  public int singleNumber(int[] nums) {
-    int single = 0;
-    for (int i = 0; i < 32; i++) {
-      int temp = 0;
-      for (int num : nums) {
-        temp += ((num >> i) & 1);
-      }
-      if (temp % 3 != 0) {
-        single |= 1 << i;
-      }
+    public int singleNumber(int[] nums) {
+        int single = 0;
+        for (int i = 0; i < 32; i++) {
+            int temp = 0;
+            for (int num : nums) {
+                temp += ((num >> i) & 1);
+            }
+            if (temp % 3 != 0) {
+                single |= 1 << i;
+            }
+        }
+        return single;
     }
-    return single;
-  }
 
 }

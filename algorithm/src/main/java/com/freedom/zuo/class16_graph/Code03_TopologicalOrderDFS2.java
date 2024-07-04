@@ -1,10 +1,6 @@
 package com.freedom.zuo.class16_graph;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -15,70 +11,70 @@ import java.util.stream.Collectors;
  */
 public class Code03_TopologicalOrderDFS2 {
 
-  /**
-   * 总体的思想是：根据点的个数，从高到低
-   * <p>
-   * 拓扑序：有向图，无环
-   *
-   * @param graph
-   * @return 返回拓扑序
-   */
-  public static List<DirectedGraphNode> topSort(List<DirectedGraphNode> graph) {
-    Map<DirectedGraphNode, Record> map = new HashMap<>();
-    for (DirectedGraphNode node : graph) {
-      function(node, map);
+    /**
+     * 总体的思想是：根据点的个数，从高到低
+     * <p>
+     * 拓扑序：有向图，无环
+     *
+     * @param graph
+     * @return 返回拓扑序
+     */
+    public static List<DirectedGraphNode> topSort(List<DirectedGraphNode> graph) {
+        Map<DirectedGraphNode, Record> map = new HashMap<>();
+        for (DirectedGraphNode node : graph) {
+            function(node, map);
+        }
+
+        List<Record> records = map.values().stream().collect(Collectors.toList());
+        records.sort(new MyComparator());
+
+        return records.stream().map(x -> x.node).collect(Collectors.toList());
     }
 
-    List<Record> records = map.values().stream().collect(Collectors.toList());
-    records.sort(new MyComparator());
+    private static Record function(DirectedGraphNode node, Map<DirectedGraphNode, Record> map) {
+        if (map.containsKey(node)) {
+            return map.get(node);
+        }
 
-    return records.stream().map(x -> x.node).collect(Collectors.toList());
-  }
+        int nodes = 0;
+        for (DirectedGraphNode neighbor : node.neighbors) {
+            nodes += function(neighbor, map).nodes;
+        }
 
-  private static Record function(DirectedGraphNode node, Map<DirectedGraphNode, Record> map) {
-    if (map.containsKey(node)) {
-      return map.get(node);
+        Record record = new Record(node, nodes + 1);
+        map.put(node, record);
+        return record;
     }
 
-    int nodes = 0;
-    for (DirectedGraphNode neighbor : node.neighbors) {
-      nodes += function(neighbor, map).nodes;
+    static class MyComparator implements Comparator<Record> {
+
+        @Override
+        public int compare(Record o1, Record o2) {
+            return o1.nodes == o2.nodes ? 0 : (o1.nodes > o2.nodes ? -1 : 1);
+        }
     }
 
-    Record record = new Record(node, nodes + 1);
-    map.put(node, record);
-    return record;
-  }
+    static class Record {
 
-  static class MyComparator implements Comparator<Record> {
+        // 节点
+        DirectedGraphNode node;
+        // 节点之后的个数，可以重复算
+        int nodes;
 
-    @Override
-    public int compare(Record o1, Record o2) {
-      return o1.nodes == o2.nodes ? 0 : (o1.nodes > o2.nodes ? -1 : 1);
+        public Record(DirectedGraphNode node, int nodes) {
+            this.node = node;
+            this.nodes = nodes;
+        }
     }
-  }
 
-  static class Record {
+    static class DirectedGraphNode {
 
-    // 节点
-    DirectedGraphNode node;
-    // 节点之后的个数，可以重复算
-    int nodes;
+        public int label;
+        public List<DirectedGraphNode> neighbors;
 
-    public Record(DirectedGraphNode node, int nodes) {
-      this.node = node;
-      this.nodes = nodes;
+        public DirectedGraphNode(int x) {
+            label = x;
+            neighbors = new ArrayList<>();
+        }
     }
-  }
-
-  static class DirectedGraphNode {
-
-    public int label;
-    public List<DirectedGraphNode> neighbors;
-
-    public DirectedGraphNode(int x) {
-      label = x;
-      neighbors = new ArrayList<>();
-    }
-  }
 }

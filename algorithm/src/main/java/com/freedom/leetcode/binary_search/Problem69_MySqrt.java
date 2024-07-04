@@ -13,27 +13,27 @@ package com.freedom.leetcode.binary_search;
  */
 public class Problem69_MySqrt {
 
-  public static int mySqrt(int x) {
-    if (x == 0) {
-      return 0;
+    public static int mySqrt(int x) {
+        if (x == 0) {
+            return 0;
+        }
+        int ans = -1;
+        int high = x;
+        int low = 0;
+        while (low <= high) {
+            int mid = low + ((high - low) >> 1);
+            if ((long) mid * mid <= x) {
+                ans = mid;
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return ans;
     }
-    int ans = -1;
-    int high = x;
-    int low = 0;
-    while (low <= high) {
-      int mid = low + ((high - low) >> 1);
-      if ((long) mid * mid <= x) {
-        ans = mid;
-        low = mid + 1;
-      } else {
-        high = mid - 1;
-      }
-    }
-    return ans;
-  }
 
-  public static void main(String[] args) {
-    int i = mySqrt(2147395599);
-    System.out.println(i);
-  }
+    public static void main(String[] args) {
+        int i = mySqrt(2147395599);
+        System.out.println(i);
+    }
 }

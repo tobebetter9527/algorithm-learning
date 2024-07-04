@@ -12,8 +12,8 @@ public class Offer20 {
     }
 
     public boolean isNumber(String s) {
-        Map<State,Map<CharType,State>> map = new HashMap<>();
-        Map<CharType,State> initialMap = new HashMap<CharType, State>(){{
+        Map<State, Map<CharType, State>> map = new HashMap<>();
+        Map<CharType, State> initialMap = new HashMap<CharType, State>() {{
             put(CharType.BLANK, State.STATE_INITIAL);
             put(CharType.DOT, State.STATE_POINT_WITHOUT_INT);
             put(CharType.SIGN, State.STATE_INT_SIGN);

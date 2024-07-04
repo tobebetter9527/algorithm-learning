@@ -8,20 +8,20 @@ package com.freedom.leetcode.string;
  */
 public class Problem344_ReverseString {
 
-  /**
-   * time complexity is O(n), space complexity is O(1)
-   *
-   * @param s
-   */
-  public void reverseString(char[] s) {
-    int left = 0, right = s.length - 1;
-    while (right > left) {
-      char temp = s[left];
-      s[left] = s[right];
-      s[right] = temp;
-      left++;
-      right--;
+    /**
+     * time complexity is O(n), space complexity is O(1)
+     *
+     * @param s
+     */
+    public void reverseString(char[] s) {
+        int left = 0, right = s.length - 1;
+        while (right > left) {
+            char temp = s[left];
+            s[left] = s[right];
+            s[right] = temp;
+            left++;
+            right--;
+        }
     }
-  }
 
 }

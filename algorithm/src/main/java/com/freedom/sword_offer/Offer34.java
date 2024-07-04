@@ -10,45 +10,44 @@ import java.util.List;
  */
 public class Offer34 {
 
-  List<List<Integer>> ans;
-  LinkedList<Integer> list;
+    List<List<Integer>> ans;
+    LinkedList<Integer> list;
 
-  public List<List<Integer>> pathSum(TreeNode root, int target) {
-    ans = new LinkedList<>();
-    list = new LinkedList<>();
-    backTrack(root, target);
-    return ans;
-  }
+    public static void main(String[] args) {
+        int target = 3;
+        TreeNode root = new TreeNode(1);
+        TreeNode node1 = new TreeNode(2);
+        TreeNode node2 = new TreeNode(3);
+        root.left = node1;
+        root.right = node2;
 
-  private void backTrack(TreeNode root, int target) {
-    if (root == null) {
-      return;
+        Offer34 offer34 = new Offer34();
+        List<List<Integer>> lists = offer34.pathSum(root, target);
+        System.out.println(lists);
     }
 
-    list.add(root.val);
-    target -= root.val;
-
-    if (target == 0 && root.left == null && root.right == null) {
-      ans.add(new ArrayList<>(list));
+    public List<List<Integer>> pathSum(TreeNode root, int target) {
+        ans = new LinkedList<>();
+        list = new LinkedList<>();
+        backTrack(root, target);
+        return ans;
     }
-    backTrack(root.left, target);
-    backTrack(root.right, target);
-    list.removeLast();
-  }
 
+    private void backTrack(TreeNode root, int target) {
+        if (root == null) {
+            return;
+        }
 
-  public static void main(String[] args) {
-    int target = 3;
-    TreeNode root = new TreeNode(1);
-    TreeNode node1 = new TreeNode(2);
-    TreeNode node2 = new TreeNode(3);
-    root.left = node1;
-    root.right = node2;
+        list.add(root.val);
+        target -= root.val;
 
-    Offer34 offer34 = new Offer34();
-    List<List<Integer>> lists = offer34.pathSum(root, target);
-    System.out.println(lists);
-  }
+        if (target == 0 && root.left == null && root.right == null) {
+            ans.add(new ArrayList<>(list));
+        }
+        backTrack(root.left, target);
+        backTrack(root.right, target);
+        list.removeLast();
+    }
 
 
 }

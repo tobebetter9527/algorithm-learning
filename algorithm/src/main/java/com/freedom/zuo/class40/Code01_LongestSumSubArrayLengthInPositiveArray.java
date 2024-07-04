@@ -12,91 +12,91 @@ package com.freedom.zuo.class40;
  */
 public class Code01_LongestSumSubArrayLengthInPositiveArray {
 
-  public static int getMaxLength(int[] arr, int K) {
-    int left = 0;
-    int right = 0;
-    int sum = arr[0];
-    int maxLen = 0;
+    public static int getMaxLength(int[] arr, int K) {
+        int left = 0;
+        int right = 0;
+        int sum = arr[0];
+        int maxLen = 0;
 
-    while (right < arr.length) {
-      if (sum == K) {
-        maxLen = Math.max(maxLen, right - left + 1);
-        sum -= arr[left++];
-      } else if (sum < K) {
-        right++;
-        if (right < arr.length) {
-          sum += arr[right];
+        while (right < arr.length) {
+            if (sum == K) {
+                maxLen = Math.max(maxLen, right - left + 1);
+                sum -= arr[left++];
+            } else if (sum < K) {
+                right++;
+                if (right < arr.length) {
+                    sum += arr[right];
+                }
+            } else {
+                sum -= arr[left++];
+            }
         }
-      } else {
-        sum -= arr[left++];
-      }
+        return maxLen;
     }
-    return maxLen;
-  }
 
-  // ----------------------//
+    // ----------------------//
 
-  /**
-   * 暴力求解
-   *
-   * @param arr
-   * @param K
-   * @return
-   */
-  public static int right(int[] arr, int K) {
-    int maxLen = 0;
-    for (int i = 0; i < arr.length; i++) {
-      for (int j = i; j < arr.length; j++) {
-        if (isValid(arr, i, j, K)) {
-          maxLen = Math.max(maxLen, j - i + 1);
+    /**
+     * 暴力求解
+     *
+     * @param arr
+     * @param K
+     * @return
+     */
+    public static int right(int[] arr, int K) {
+        int maxLen = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i; j < arr.length; j++) {
+                if (isValid(arr, i, j, K)) {
+                    maxLen = Math.max(maxLen, j - i + 1);
+                }
+            }
         }
-      }
-    }
-    return maxLen;
-  }
-
-  private static boolean isValid(int[] arr, int i, int j, int k) {
-    int sum = 0;
-    for (int l = i; l <= j; l++) {
-      sum += arr[l];
+        return maxLen;
     }
 
-    return sum == k;
-  }
+    private static boolean isValid(int[] arr, int i, int j, int k) {
+        int sum = 0;
+        for (int l = i; l <= j; l++) {
+            sum += arr[l];
+        }
 
-  // -------------------------------------------------------------//
-
-  public static void main(String[] args) {
-    int maxLength = 50;
-    int maxValue = 20;
-    int testTimes = 1000000;
-    for (int i = 0; i < testTimes; i++) {
-      int[] arr = generateArray(maxLength, maxValue);
-      int K = (int) (Math.random() * (maxValue << 1)) + 1;
-      int ans1 = right(arr, K);
-      int ans2 = getMaxLength(arr, K);
-      if (ans1 != ans2) {
-        System.out.println("wrong");
-        System.out.println("k: " + K);
-        printArray(arr);
-      }
+        return sum == k;
     }
-    System.out.println("done!");
-  }
 
-  private static int[] generateArray(int maxLength, int maxValue) {
-    int length = (int) (Math.random() * maxLength) + 1;
-    int[] arr = new int[length];
-    for (int i = 0; i < length; i++) {
-      arr[i] = (int) (Math.random() * maxValue) +1;
-    }
-    return arr;
-  }
+    // -------------------------------------------------------------//
 
-  private static void printArray(int[] arr) {
-    for (int i : arr) {
-      System.out.print(i + " ");
+    public static void main(String[] args) {
+        int maxLength = 50;
+        int maxValue = 20;
+        int testTimes = 1000000;
+        for (int i = 0; i < testTimes; i++) {
+            int[] arr = generateArray(maxLength, maxValue);
+            int K = (int) (Math.random() * (maxValue << 1)) + 1;
+            int ans1 = right(arr, K);
+            int ans2 = getMaxLength(arr, K);
+            if (ans1 != ans2) {
+                System.out.println("wrong");
+                System.out.println("k: " + K);
+                printArray(arr);
+            }
+        }
+        System.out.println("done!");
     }
-  }
+
+    private static int[] generateArray(int maxLength, int maxValue) {
+        int length = (int) (Math.random() * maxLength) + 1;
+        int[] arr = new int[length];
+        for (int i = 0; i < length; i++) {
+            arr[i] = (int) (Math.random() * maxValue) + 1;
+        }
+        return arr;
+    }
+
+    private static void printArray(int[] arr) {
+        for (int i : arr) {
+            System.out.print(i + " ");
+        }
+    }
 
 }

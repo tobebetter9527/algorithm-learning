@@ -12,38 +12,38 @@ import java.util.Map;
 public class Problem106_ConstructBinaryTreefromInorderandPostorderTraversal {
 
 
-  public static TreeNode buildTree(int[] inorder, int[] postorder) {
-    Map<Integer, Integer> inMap = new HashMap<>(inorder.length);
-    for (int i = 0; i < inorder.length; i++) {
-      inMap.put(inorder[i], i);
-    }
-    return process(inMap, 0, inorder.length - 1, 0, postorder.length - 1, postorder);
-  }
-
-  private static TreeNode process(Map<Integer, Integer> inMap, int inS, int inE,
-      int postS, int postE, int[] postorder) {
-    if (inS > inE || postS > postE) {
-      return null;
+    public static TreeNode buildTree(int[] inorder, int[] postorder) {
+        Map<Integer, Integer> inMap = new HashMap<>(inorder.length);
+        for (int i = 0; i < inorder.length; i++) {
+            inMap.put(inorder[i], i);
+        }
+        return process(inMap, 0, inorder.length - 1, 0, postorder.length - 1, postorder);
     }
 
-    TreeNode root = new TreeNode();
-    int value = postorder[postE];
-    root.val = value;
+    private static TreeNode process(Map<Integer, Integer> inMap, int inS, int inE,
+                                    int postS, int postE, int[] postorder) {
+        if (inS > inE || postS > postE) {
+            return null;
+        }
 
-    Integer inRootIndex = inMap.get(value);
+        TreeNode root = new TreeNode();
+        int value = postorder[postE];
+        root.val = value;
 
-    root.left = process(inMap, inS, inRootIndex - 1, postS, postS + (inRootIndex - 1 - inS),
-        postorder);
-    root.right = process(inMap, inRootIndex + 1, inE, postS + (inRootIndex - 1 - inS) + 1,
-        postE - 1, postorder);
+        Integer inRootIndex = inMap.get(value);
 
-    return root;
-  }
+        root.left = process(inMap, inS, inRootIndex - 1, postS, postS + (inRootIndex - 1 - inS),
+                postorder);
+        root.right = process(inMap, inRootIndex + 1, inE, postS + (inRootIndex - 1 - inS) + 1,
+                postE - 1, postorder);
 
-  public static void main(String[] args) {
-    int[] inorder = {9, 3, 15, 20, 7};
-    int[] postorder = {9, 15, 7, 20, 3};
-    TreeNode node = buildTree(inorder, postorder);
-    System.out.println(node);
-  }
+        return root;
+    }
+
+    public static void main(String[] args) {
+        int[] inorder = {9, 3, 15, 20, 7};
+        int[] postorder = {9, 15, 7, 20, 3};
+        TreeNode node = buildTree(inorder, postorder);
+        System.out.println(node);
+    }
 }

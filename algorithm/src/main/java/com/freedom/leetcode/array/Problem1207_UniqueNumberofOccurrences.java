@@ -13,14 +13,14 @@ import java.util.stream.Collectors;
  */
 public class Problem1207_UniqueNumberofOccurrences {
 
-  public boolean uniqueOccurrences(int[] arr) {
-    int n = arr.length;
-    Map<Integer, Integer> map = new HashMap<>(n);
-    for (int i : arr) {
-      map.put(i, map.getOrDefault(i, 0) + 1);
-    }
-    Set<Integer> set = map.values().stream().collect(Collectors.toSet());
+    public boolean uniqueOccurrences(int[] arr) {
+        int n = arr.length;
+        Map<Integer, Integer> map = new HashMap<>(n);
+        for (int i : arr) {
+            map.put(i, map.getOrDefault(i, 0) + 1);
+        }
+        Set<Integer> set = map.values().stream().collect(Collectors.toSet());
 
-    return set.size() == map.size();
-  }
+        return set.size() == map.size();
+    }
 }

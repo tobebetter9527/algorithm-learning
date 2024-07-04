@@ -11,63 +11,63 @@ import java.util.Map;
  */
 public class Offer07 {
 
-  public static TreeNode buildTree(int[] preorder, int[] inorder) {
-    int n = preorder.length;
-    if (n == 0) {
-      return null;
-    }
-    Map<Integer, Integer> map = new HashMap<>(n);
-    for (int i = 0; i < n; i++) {
-      map.put(inorder[i], i);
-    }
-    return recursive(map, preorder, 0, n - 1, 0, n - 1);
-  }
-
-  private static TreeNode recursive(Map<Integer, Integer> map, int[] preorder, int preStart, int preEnd,
-      int inStart, int inEnd) {
-    if (preStart > preEnd || inStart > inEnd) {
-      return null;
+    public static TreeNode buildTree(int[] preorder, int[] inorder) {
+        int n = preorder.length;
+        if (n == 0) {
+            return null;
+        }
+        Map<Integer, Integer> map = new HashMap<>(n);
+        for (int i = 0; i < n; i++) {
+            map.put(inorder[i], i);
+        }
+        return recursive(map, preorder, 0, n - 1, 0, n - 1);
     }
 
-    int rootValue = preorder[preStart];
-    TreeNode root = new TreeNode(rootValue);
+    private static TreeNode recursive(Map<Integer, Integer> map, int[] preorder, int preStart, int preEnd,
+                                      int inStart, int inEnd) {
+        if (preStart > preEnd || inStart > inEnd) {
+            return null;
+        }
 
-    int inIndex = map.get(rootValue);
-    int size = inIndex - inStart;
+        int rootValue = preorder[preStart];
+        TreeNode root = new TreeNode(rootValue);
 
-    root.left = recursive(map, preorder, preStart + 1, preStart  + size, inStart, inIndex - 1);
-    root.right = recursive(map, preorder, preStart  + size + 1, preEnd, inIndex + 1, inEnd);
-    return root;
-  }
+        int inIndex = map.get(rootValue);
+        int size = inIndex - inStart;
 
-  public static TreeNode buildTree2(int[] preorder, int[] inorder) {
-    int n = preorder.length;
-    if (n == 0) {
-      return null;
+        root.left = recursive(map, preorder, preStart + 1, preStart + size, inStart, inIndex - 1);
+        root.right = recursive(map, preorder, preStart + size + 1, preEnd, inIndex + 1, inEnd);
+        return root;
     }
-    Map<Integer, Integer> map = new HashMap<>(n);
-    for (int i = 0; i < n; i++) {
-      map.put(inorder[i], i);
+
+    public static TreeNode buildTree2(int[] preorder, int[] inorder) {
+        int n = preorder.length;
+        if (n == 0) {
+            return null;
+        }
+        Map<Integer, Integer> map = new HashMap<>(n);
+        for (int i = 0; i < n; i++) {
+            map.put(inorder[i], i);
+        }
+        return recursive2(map, preorder, 0, 0, n - 1);
     }
-    return recursive2(map, preorder, 0,0, n - 1);
-  }
 
-  private static TreeNode recursive2(Map<Integer, Integer> map, int[] preorder,int rootIndex, int inLeft, int inRight) {
-    if (inLeft > inRight) {
-      return null;
+    private static TreeNode recursive2(Map<Integer, Integer> map, int[] preorder, int rootIndex, int inLeft, int inRight) {
+        if (inLeft > inRight) {
+            return null;
+        }
+        int rootValue = preorder[rootIndex];
+        int index = map.get(rootValue);
+        TreeNode root = new TreeNode(rootValue);
+        root.left = recursive2(map, preorder, rootIndex + 1, inLeft, index - 1);
+        root.right = recursive2(map, preorder, rootIndex + (index - inLeft) + 1, index + 1, inRight);
+        return root;
     }
-    int rootValue = preorder[rootIndex];
-    int index = map.get(rootValue);
-    TreeNode root = new TreeNode(rootValue);
-    root.left = recursive2(map, preorder, rootIndex + 1, inLeft, index - 1);
-    root.right = recursive2(map, preorder, rootIndex + (index - inLeft) + 1, index + 1, inRight);
-    return root;
-  }
 
 
-  public static void main(String[] args) {
-    int[] preorder = {1, 2, 3}, inorder = {2, 3, 1};
-    TreeNode treeNode = buildTree2(preorder, inorder);
-    System.out.println(treeNode.val);
-  }
+    public static void main(String[] args) {
+        int[] preorder = {1, 2, 3}, inorder = {2, 3, 1};
+        TreeNode treeNode = buildTree2(preorder, inorder);
+        System.out.println(treeNode.val);
+    }
 }

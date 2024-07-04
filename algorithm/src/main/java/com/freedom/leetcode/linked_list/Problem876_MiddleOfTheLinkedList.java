@@ -10,39 +10,39 @@ package com.freedom.leetcode.linked_list;
  */
 public class Problem876_MiddleOfTheLinkedList {
 
-  /**
-   * 转换为数组法，两次遍历法，快慢指针法
-   *
-   * @param head
-   * @return
-   */
-  public static ListNode middleNode(ListNode head) {
-    int count = 0;
-    ListNode cur = head;
-    while (cur != null) {
-      count++;
-      cur = cur.next;
+    /**
+     * 转换为数组法，两次遍历法，快慢指针法
+     *
+     * @param head
+     * @return
+     */
+    public static ListNode middleNode(ListNode head) {
+        int count = 0;
+        ListNode cur = head;
+        while (cur != null) {
+            count++;
+            cur = cur.next;
+        }
+
+        cur = head;
+        int index = count / 2;
+        while (index > 0) {
+            index--;
+            cur = cur.next;
+        }
+        return cur;
     }
 
-    cur = head;
-    int index = count / 2;
-    while (index > 0) {
-      index--;
-      cur = cur.next;
+    public static void main(String[] args) {
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(1);
+        ListNode node3 = new ListNode(1);
+        node1.next = node2;
+        node2.next = node3;
+
+        middleNode(node1);
+
     }
-    return cur;
-  }
-
-  public static void main(String[] args) {
-    ListNode node1 = new ListNode(1);
-    ListNode node2 = new ListNode(1);
-    ListNode node3 = new ListNode(1);
-    node1.next = node2;
-    node2.next = node3;
-
-    middleNode(node1);
-
-  }
 
 
 }

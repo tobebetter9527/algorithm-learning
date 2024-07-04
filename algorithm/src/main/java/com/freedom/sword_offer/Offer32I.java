@@ -11,27 +11,27 @@ import java.util.Queue;
  */
 public class Offer32I {
 
-  public int[] levelOrder(TreeNode root) {
-    if (root == null) {
-      return new int[0];
+    public int[] levelOrder(TreeNode root) {
+        if (root == null) {
+            return new int[0];
+        }
+        List<TreeNode> list = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            list.add(node);
+            if (node.left != null) {
+                queue.add(node.left);
+            }
+            if (node.right != null) {
+                queue.add(node.right);
+            }
+        }
+        int[] ans = new int[list.size()];
+        for (int i = 0; i < ans.length; i++) {
+            ans[i] = list.get(i).val;
+        }
+        return ans;
     }
-    List<TreeNode> list = new ArrayList<>();
-    Queue<TreeNode> queue = new LinkedList<>();
-    queue.add(root);
-    while (!queue.isEmpty()) {
-      TreeNode node = queue.poll();
-      list.add(node);
-      if (node.left != null) {
-        queue.add(node.left);
-      }
-      if (node.right != null) {
-        queue.add(node.right);
-      }
-    }
-    int[] ans = new int[list.size()];
-    for (int i = 0; i < ans.length; i++) {
-      ans[i] = list.get(i).val;
-    }
-    return ans;
-  }
 }

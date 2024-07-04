@@ -19,95 +19,95 @@ package com.freedom.zuo.class32_index_tree_ac;
  */
 public class Code01_IndexTree {
 
-  static class IndexTree {
+    public static void main(String[] args) {
+        int length = 100;
+        int maxVlaue = 10;
+        int testTimes = 10000000;
 
-    int[] tree;
-    int length;
+        IndexTree indexTree = new IndexTree(length);
+        Right right = new Right(length);
 
-    public IndexTree(int length) {
-      this.length = length;
-      tree = new int[length + 1];
-    }
-
-    /**
-     * 在index位置，加值value
-     *
-     * @param index 索引
-     * @param value 值
-     */
-    public void add(int index, int value) {
-      while (index <= length) {
-        tree[index] += value;
-        index += index & -index;
-      }
-    }
-
-    /**
-     * 求1到index累加和
-     *
-     * @param index 索引
-     * @return
-     */
-    public int sum(int index) {
-      int ans = 0;
-      while (index > 0) {
-        ans += tree[index];
-        index -= index & -index;
-      }
-      return ans;
-    }
-  }
-
-  // ----------------------------------------------------------------------------- //
-
-  static class Right {
-
-    int[] nums;
-    int length;
-
-    public Right(int length) {
-      this.length = length;
-      nums = new int[length + 1];
-    }
-
-    public void add(int index, int value) {
-      nums[index] += value;
-    }
-
-    public int sum(int index) {
-      int ans = 0;
-      for (int i = 1; i <= index; i++) {
-        ans += nums[i];
-      }
-      return ans;
-    }
-  }
-
-  // ----------------------------------------------------------------------------- //
-
-  public static void main(String[] args) {
-    int length = 100;
-    int maxVlaue = 10;
-    int testTimes = 10000000;
-
-    IndexTree indexTree = new IndexTree(length);
-    Right right = new Right(length);
-
-    for (int i = 0; i < testTimes; i++) {
-      int index = (int) (Math.random() * length) + 1;
-      int value = (int) (Math.random() * maxVlaue) + 1;
-      if (Math.random() <= 0.5D) {
-        indexTree.add(index, value);
-        right.add(index, value);
-      } else {
-        int sum = indexTree.sum(index);
-        int sum1 = right.sum(index);
-        if (sum != sum1) {
-          System.out.println("Something is wrong!");
+        for (int i = 0; i < testTimes; i++) {
+            int index = (int) (Math.random() * length) + 1;
+            int value = (int) (Math.random() * maxVlaue) + 1;
+            if (Math.random() <= 0.5D) {
+                indexTree.add(index, value);
+                right.add(index, value);
+            } else {
+                int sum = indexTree.sum(index);
+                int sum1 = right.sum(index);
+                if (sum != sum1) {
+                    System.out.println("Something is wrong!");
+                }
+            }
         }
-      }
+        System.out.println("done!");
     }
-    System.out.println("done!");
-  }
+
+    // ----------------------------------------------------------------------------- //
+
+    static class IndexTree {
+
+        int[] tree;
+        int length;
+
+        public IndexTree(int length) {
+            this.length = length;
+            tree = new int[length + 1];
+        }
+
+        /**
+         * 在index位置，加值value
+         *
+         * @param index 索引
+         * @param value 值
+         */
+        public void add(int index, int value) {
+            while (index <= length) {
+                tree[index] += value;
+                index += index & -index;
+            }
+        }
+
+        /**
+         * 求1到index累加和
+         *
+         * @param index 索引
+         * @return
+         */
+        public int sum(int index) {
+            int ans = 0;
+            while (index > 0) {
+                ans += tree[index];
+                index -= index & -index;
+            }
+            return ans;
+        }
+    }
+
+    // ----------------------------------------------------------------------------- //
+
+    static class Right {
+
+        int[] nums;
+        int length;
+
+        public Right(int length) {
+            this.length = length;
+            nums = new int[length + 1];
+        }
+
+        public void add(int index, int value) {
+            nums[index] += value;
+        }
+
+        public int sum(int index) {
+            int ans = 0;
+            for (int i = 1; i <= index; i++) {
+                ans += nums[i];
+            }
+            return ans;
+        }
+    }
 
 }

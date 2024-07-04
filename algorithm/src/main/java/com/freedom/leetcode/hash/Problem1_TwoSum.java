@@ -16,43 +16,43 @@ import java.util.Map;
  */
 public class Problem1_TwoSum {
 
-  /**
-   * 时间复杂度：O(N^2),空间复杂度：O(1)
-   *
-   * @param nums
-   * @param target
-   * @return
-   */
-  public int[] twoSum(int[] nums, int target) {
-    int n = nums.length;
-    for (int i = 0; i < n; i++) {
-      int num1 = nums[i];
-      for (int j = i + 1; j < n; j++) {
-        if ((num1 + nums[j]) == target) {
-          return new int[]{i, j};
+    /**
+     * 时间复杂度：O(N^2),空间复杂度：O(1)
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int[] twoSum(int[] nums, int target) {
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            int num1 = nums[i];
+            for (int j = i + 1; j < n; j++) {
+                if ((num1 + nums[j]) == target) {
+                    return new int[]{i, j};
+                }
+            }
         }
-      }
+        return null;
     }
-    return null;
-  }
 
-  /**
-   * time complexity is O(n), space complextiy is O(1).
-   *
-   * @param nums
-   * @param target
-   * @return
-   */
-  public int[] twoSum2(int[] nums, int target) {
-    int n = nums.length;
-    Map<Integer, Integer> map = new HashMap<>(n);
-    for (int i = 0; i < n; i++) {
-      int num = nums[i];
-      if (map.containsKey(target - num)) {
-        return new int[]{map.get(target - num), i};
-      }
-      map.put(num, i);
+    /**
+     * time complexity is O(n), space complextiy is O(1).
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int[] twoSum2(int[] nums, int target) {
+        int n = nums.length;
+        Map<Integer, Integer> map = new HashMap<>(n);
+        for (int i = 0; i < n; i++) {
+            int num = nums[i];
+            if (map.containsKey(target - num)) {
+                return new int[]{map.get(target - num), i};
+            }
+            map.put(num, i);
+        }
+        return null;
     }
-    return null;
-  }
 }

@@ -13,41 +13,41 @@ import java.util.PriorityQueue;
  */
 public class Problem347_TopKFrequentElements {
 
-  /**
-   * time complexity is O(nlogk),space complexity is O(n).
-   *
-   * @param nums
-   * @param k
-   * @return
-   */
-  public int[] topKFrequent(int[] nums, int k) {
-    Map<Integer, Integer> map = new HashMap<>(nums.length);
-    for (int num : nums) {
-      map.put(num, map.getOrDefault(num, 0) + 1);
-    }
-
-    // 创建大小为k的小根堆
-    PriorityQueue<int[]> heap = new PriorityQueue<>(k, (o1, o2) -> o1[1] - o2[1]);
-    for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-      Integer num = entry.getKey();
-      Integer count = entry.getValue();
-      // 先填满heap
-      if (heap.size() == k) {
-        if (heap.peek()[1] < count) {
-          heap.poll();
-          heap.add(new int[]{num, count});
+    /**
+     * time complexity is O(nlogk),space complexity is O(n).
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    public int[] topKFrequent(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<>(nums.length);
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
         }
-      } else {
-        heap.add(new int[]{num, count});
-      }
-    }
 
-    // 有可能k比heap的size大。
-    int[] arr = new int[heap.size()];
-    for (int i = 0; i < k; i++) {
-      arr[i] = heap.poll()[0];
-    }
+        // 创建大小为k的小根堆
+        PriorityQueue<int[]> heap = new PriorityQueue<>(k, (o1, o2) -> o1[1] - o2[1]);
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            Integer num = entry.getKey();
+            Integer count = entry.getValue();
+            // 先填满heap
+            if (heap.size() == k) {
+                if (heap.peek()[1] < count) {
+                    heap.poll();
+                    heap.add(new int[]{num, count});
+                }
+            } else {
+                heap.add(new int[]{num, count});
+            }
+        }
 
-    return arr;
-  }
+        // 有可能k比heap的size大。
+        int[] arr = new int[heap.size()];
+        for (int i = 0; i < k; i++) {
+            arr[i] = heap.poll()[0];
+        }
+
+        return arr;
+    }
 }

@@ -11,13 +11,14 @@ package com.freedom.leetcode.linked_list;
  */
 public class Problem237_DeleteNodeInALinkedList {
 
-  /**
-   * 时间复杂度：O(1)。空间复杂度：O(1)。
-   * @param node
-   */
-  public void deleteNode(ListNode node) {
-    node.val = node.next.val;
-    node.next = node.next.next;
-  }
+    /**
+     * 时间复杂度：O(1)。空间复杂度：O(1)。
+     *
+     * @param node
+     */
+    public void deleteNode(ListNode node) {
+        node.val = node.next.val;
+        node.next = node.next.next;
+    }
 
 }

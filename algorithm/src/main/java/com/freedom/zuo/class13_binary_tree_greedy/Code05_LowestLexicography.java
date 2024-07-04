@@ -13,102 +13,100 @@ import java.util.TreeSet;
 public class Code05_LowestLexicography {
 
 
-  public static String lowestString2(String[] strs) {
-    if (strs == null || strs.length == 0) {
-      return "";
+    public static String lowestString2(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+
+        Arrays.sort(strs, new MyComparator());
+        StringBuilder sb = new StringBuilder();
+        for (String str : strs) {
+            sb.append(str);
+        }
+
+        return sb.toString();
     }
 
-    Arrays.sort(strs, new MyComparator());
-    StringBuilder sb = new StringBuilder();
-    for (String str : strs) {
-      sb.append(str);
+
+    public static String lowestString1(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+        TreeSet<String> process = process(strs);
+        return process.first();
     }
 
-    return sb.toString();
-  }
+    private static TreeSet<String> process(String[] strs) {
+        TreeSet<String> set = new TreeSet<>();
+        if (strs.length == 0) {
+            set.add("");
+            return set;
+        }
 
-
-  public static String lowestString1(String[] strs) {
-    if (strs == null || strs.length == 0) {
-      return "";
+        for (int i = 0; i < strs.length; i++) {
+            String str = strs[i];
+            String[] nexts = removeIndex(strs, i);
+            TreeSet<String> treeSet = process(nexts);
+            for (String s : treeSet) {
+                set.add(str + s);
+            }
+        }
+        return set;
     }
-    TreeSet<String> process = process(strs);
-    return process.first();
-  }
 
-  private static TreeSet<String> process(String[] strs) {
-    TreeSet<String> set = new TreeSet<>();
-    if (strs.length == 0) {
-      set.add("");
-      return set;
+    private static String[] removeIndex(String[] strs, int j) {
+        if (strs == null) {
+            return null;
+        }
+        String[] nexts = new String[strs.length - 1];
+        int index = 0;
+        for (int i = 0; i < strs.length; i++) {
+            if (i != j) {
+                nexts[index++] = strs[i];
+            }
+        }
+        return nexts;
     }
 
-    for (int i = 0; i < strs.length; i++) {
-      String str = strs[i];
-      String[] nexts = removeIndex(strs, i);
-      TreeSet<String> treeSet = process(nexts);
-      for (String s : treeSet) {
-        set.add(str + s);
-      }
+    public static void main(String[] args) {
+        int maxLength = 8;
+        int maxStrLength = 20;
+        int testTimes = 10000;
+        for (int i = 0; i < testTimes; i++) {
+            String[] strs = generateRandomStringArray(maxLength, maxStrLength);
+            String[] copyStrs = Arrays.copyOf(strs, strs.length);
+            if (!lowestString1(strs).equals(lowestString2(copyStrs))) {
+                System.out.println("wrong!");
+            }
+        }
+        System.out.println("done!");
     }
-    return set;
-  }
 
-  private static String[] removeIndex(String[] strs, int j) {
-    if (strs == null) {
-      return null;
+    private static String[] generateRandomStringArray(int maxLength, int maxStrLength) {
+        int length = (int) (Math.random() * maxLength);
+        String[] strs = new String[length];
+        for (int i = 0; i < length; i++) {
+            strs[i] = generateRandomString(maxStrLength);
+        }
+        return strs;
     }
-    String[] nexts = new String[strs.length - 1];
-    int index = 0;
-    for (int i = 0; i < strs.length; i++) {
-      if (i != j) {
-        nexts[index++] = strs[i];
-      }
+
+    private static String generateRandomString(int maxStrLength) {
+        int length = (int) (Math.random() * maxStrLength) + 1;
+        char[] chars = new char[length];
+        for (int i = 0; i < length; i++) {
+            chars[i] =
+                    (Math.random() > 0.5D) ? (char) (97 + (int) (Math.random() * 26)) : (char) (65 + (int) (Math.random() * 26));
+        }
+        return String.valueOf(chars);
     }
-    return nexts;
-  }
 
+    static class MyComparator implements Comparator<String> {
 
-  static class MyComparator implements Comparator<String> {
-
-    @Override
-    public int compare(String o1, String o2) {
-      return (o1 + o2).compareTo(o2 + o1);
+        @Override
+        public int compare(String o1, String o2) {
+            return (o1 + o2).compareTo(o2 + o1);
+        }
     }
-  }
-
-
-  public static void main(String[] args) {
-    int maxLength = 8;
-    int maxStrLength = 20;
-    int testTimes = 10000;
-    for (int i = 0; i < testTimes; i++) {
-      String[] strs = generateRandomStringArray(maxLength, maxStrLength);
-      String[] copyStrs = Arrays.copyOf(strs, strs.length);
-      if (!lowestString1(strs).equals(lowestString2(copyStrs))) {
-        System.out.println("wrong!");
-      }
-    }
-    System.out.println("done!");
-  }
-
-  private static String[] generateRandomStringArray(int maxLength, int maxStrLength) {
-    int length = (int) (Math.random() * maxLength);
-    String[] strs = new String[length];
-    for (int i = 0; i < length; i++) {
-      strs[i] = generateRandomString(maxStrLength);
-    }
-    return strs;
-  }
-
-  private static String generateRandomString(int maxStrLength) {
-    int length = (int) (Math.random() * maxStrLength) + 1;
-    char[] chars = new char[length];
-    for (int i = 0; i < length; i++) {
-      chars[i] =
-          (Math.random() > 0.5D) ? (char) (97 + (int) (Math.random() * 26)) : (char) (65 + (int) (Math.random() * 26));
-    }
-    return String.valueOf(chars);
-  }
 
 }

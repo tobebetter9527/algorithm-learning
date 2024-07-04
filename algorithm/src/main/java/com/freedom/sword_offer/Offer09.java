@@ -10,30 +10,30 @@ import java.util.Stack;
  */
 public class Offer09 {
 
-  class CQueue {
+    class CQueue {
 
-    Stack<Integer> in;
-    Stack<Integer> out;
+        Stack<Integer> in;
+        Stack<Integer> out;
 
-    public CQueue() {
-      in = new Stack<>();
-      out = new Stack<>();
-    }
-
-    public void appendTail(int value) {
-      in.push(value);
-    }
-
-    public int deleteHead() {
-      if (out.isEmpty()) {
-        while (!in.isEmpty()) {
-          out.push(in.pop());
+        public CQueue() {
+            in = new Stack<>();
+            out = new Stack<>();
         }
-      }
-      if (out.isEmpty()) {
-        return -1;
-      }
-      return out.pop();
+
+        public void appendTail(int value) {
+            in.push(value);
+        }
+
+        public int deleteHead() {
+            if (out.isEmpty()) {
+                while (!in.isEmpty()) {
+                    out.push(in.pop());
+                }
+            }
+            if (out.isEmpty()) {
+                return -1;
+            }
+            return out.pop();
+        }
     }
-  }
 }

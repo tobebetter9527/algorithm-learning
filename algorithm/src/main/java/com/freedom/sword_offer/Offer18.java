@@ -9,19 +9,19 @@ package com.freedom.sword_offer;
 public class Offer18 {
 
 
-  public ListNode deleteNode(ListNode head, int val) {
-    ListNode preHead = new ListNode(0);
-    preHead.next = head;
-    ListNode pre = preHead, cur = head;
-    while (cur != null) {
-      if (cur.val == val) {
-        pre.next = cur.next;
+    public ListNode deleteNode(ListNode head, int val) {
+        ListNode preHead = new ListNode(0);
+        preHead.next = head;
+        ListNode pre = preHead, cur = head;
+        while (cur != null) {
+            if (cur.val == val) {
+                pre.next = cur.next;
+                return preHead.next;
+            }
+            pre = cur;
+            cur = cur.next;
+        }
         return preHead.next;
-      }
-      pre = cur;
-      cur = cur.next;
     }
-    return preHead.next;
-  }
 
 }

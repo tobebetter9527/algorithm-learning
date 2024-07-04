@@ -8,24 +8,24 @@ package com.freedom.wangzheng;
  */
 public class Class10_Recursion {
 
-  /**
-   * @param n
-   * @return
-   */
-  public static int recursion(int n) {
-    if (n == 1) {
-      return 1;
-    }
-    if (n == 2) {
-      return 2;
+    /**
+     * @param n
+     * @return
+     */
+    public static int recursion(int n) {
+        if (n == 1) {
+            return 1;
+        }
+        if (n == 2) {
+            return 2;
+        }
+
+        return recursion(n - 1) + recursion(n - 2);
     }
 
-    return recursion(n - 1) + recursion(n - 2);
-  }
-
-  public static void main(String[] args) {
-    int n = 7;
-    int recursion = recursion(n);
-    System.out.println(recursion);
-  }
+    public static void main(String[] args) {
+        int n = 7;
+        int recursion = recursion(n);
+        System.out.println(recursion);
+    }
 }

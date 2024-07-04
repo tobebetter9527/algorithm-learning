@@ -12,50 +12,49 @@ import java.util.Queue;
 public class Code01_LevelTraverseBT {
 
 
-  public static void levelTraverse(Node root) {
-    if (root == null) {
-      return;
+    public static void levelTraverse(Node root) {
+        if (root == null) {
+            return;
+        }
+        Node cur = root;
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(cur);
+        while (!queue.isEmpty()) {
+            cur = queue.poll();
+            System.out.print(cur.val + "->");
+            if (cur.left != null) {
+                queue.add(cur.left);
+            }
+            if (cur.right != null) {
+                queue.add(cur.right);
+            }
+        }
     }
-    Node cur = root;
 
-    Queue<Node> queue = new LinkedList<>();
-    queue.add(cur);
-    while (!queue.isEmpty()) {
-      cur = queue.poll();
-      System.out.print(cur.val + "->");
-      if (cur.left != null) {
-        queue.add(cur.left);
-      }
-      if (cur.right != null) {
-        queue.add(cur.right);
-      }
+
+    public static void main(String[] args) {
+        Node head = new Node(1);
+        head.left = new Node(2);
+        head.right = new Node(3);
+        head.left.left = new Node(4);
+        head.left.right = new Node(5);
+        head.right.left = new Node(6);
+        head.right.right = new Node(7);
+
+        levelTraverse(head);
     }
-  }
 
 
-  public static void main(String[] args) {
-    Node head = new Node(1);
-    head.left = new Node(2);
-    head.right = new Node(3);
-    head.left.left = new Node(4);
-    head.left.right = new Node(5);
-    head.right.left = new Node(6);
-    head.right.right = new Node(7);
+    private static class Node {
 
-    levelTraverse(head);
-  }
+        int val;
+        Node left;
+        Node right;
 
-
-
-  private static class Node {
-
-    int val;
-    Node left;
-    Node right;
-
-    public Node(int val) {
-      this.val = val;
+        public Node(int val) {
+            this.val = val;
+        }
     }
-  }
 
 }

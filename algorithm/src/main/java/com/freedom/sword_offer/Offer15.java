@@ -6,19 +6,19 @@ package com.freedom.sword_offer;
  */
 public class Offer15 {
 
-  public static int hammingWeight(int n) {
-    int res = 0;
-    for (int i = 0; i < 32; i++) {
-      if ((n >> i & 1) == 1) {
-        res++;
-      }
+    public static int hammingWeight(int n) {
+        int res = 0;
+        for (int i = 0; i < 32; i++) {
+            if ((n >> i & 1) == 1) {
+                res++;
+            }
+        }
+        return res;
     }
-    return res;
-  }
 
-  public static void main(String[] args) {
-    int n = 120;
-    System.out.println(hammingWeight(n));
+    public static void main(String[] args) {
+        int n = 120;
+        System.out.println(hammingWeight(n));
 
-  }
+    }
 }

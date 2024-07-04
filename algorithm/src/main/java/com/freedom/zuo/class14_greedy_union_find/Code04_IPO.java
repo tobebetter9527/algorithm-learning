@@ -14,66 +14,66 @@ import java.util.PriorityQueue;
 public class Code04_IPO {
 
 
-  /**
-   * @param k       只能串行的最多做k个项目
-   * @param w       初始的资金
-   * @param profits 表示i号项目在扣除花费之后还能挣到的钱(利润)
-   * @param capital costs[i]表示i号项目的花费
-   * @return
-   */
-  public int findMaximizedCapital(int k, int w, int[] profits, int[] capital) {
-    // 构建花费的小根堆和利润的大根堆
-    PriorityQueue<Project> minCostHeap = new PriorityQueue<>(new MinCostComparator());
-    PriorityQueue<Project> maxProfitHeap = new PriorityQueue<>(new MaxProfitComparator());
+    /**
+     * @param k       只能串行的最多做k个项目
+     * @param w       初始的资金
+     * @param profits 表示i号项目在扣除花费之后还能挣到的钱(利润)
+     * @param capital costs[i]表示i号项目的花费
+     * @return
+     */
+    public int findMaximizedCapital(int k, int w, int[] profits, int[] capital) {
+        // 构建花费的小根堆和利润的大根堆
+        PriorityQueue<Project> minCostHeap = new PriorityQueue<>(new MinCostComparator());
+        PriorityQueue<Project> maxProfitHeap = new PriorityQueue<>(new MaxProfitComparator());
 
-    // 先按照花费建立小根堆
-    for (int i = 0; i < profits.length; i++) {
-      minCostHeap.add(new Project(capital[i], profits[i]));
-    }
+        // 先按照花费建立小根堆
+        for (int i = 0; i < profits.length; i++) {
+            minCostHeap.add(new Project(capital[i], profits[i]));
+        }
 
-    // 只能做k个项目
-    for (int i = 0; i < k; i++) {
-      // 将目前能做的项目放入大根堆
-      while (!minCostHeap.isEmpty() && minCostHeap.peek().cost <= w) {
-        maxProfitHeap.add(minCostHeap.poll());
-      }
+        // 只能做k个项目
+        for (int i = 0; i < k; i++) {
+            // 将目前能做的项目放入大根堆
+            while (!minCostHeap.isEmpty() && minCostHeap.peek().cost <= w) {
+                maxProfitHeap.add(minCostHeap.poll());
+            }
 
-      // 如果大根堆没项目，代表无能力做
-      if (maxProfitHeap.isEmpty()) {
+            // 如果大根堆没项目，代表无能力做
+            if (maxProfitHeap.isEmpty()) {
+                return w;
+            }
+
+            w += maxProfitHeap.poll().profit;
+        }
+
         return w;
-      }
-
-      w += maxProfitHeap.poll().profit;
     }
 
-    return w;
-  }
+    static class MinCostComparator implements Comparator<Project> {
 
-  static class MinCostComparator implements Comparator<Project> {
-
-    @Override
-    public int compare(Project o1, Project o2) {
-      return o1.cost - o2.cost;
+        @Override
+        public int compare(Project o1, Project o2) {
+            return o1.cost - o2.cost;
+        }
     }
-  }
 
-  static class MaxProfitComparator implements Comparator<Project> {
+    static class MaxProfitComparator implements Comparator<Project> {
 
-    @Override
-    public int compare(Project o1, Project o2) {
-      return o2.profit - o1.profit;
+        @Override
+        public int compare(Project o1, Project o2) {
+            return o2.profit - o1.profit;
+        }
     }
-  }
 
-  static class Project {
+    static class Project {
 
-    int cost;
-    int profit;
+        int cost;
+        int profit;
 
-    public Project(int cost, int profit) {
-      this.cost = cost;
-      this.profit = profit;
+        public Project(int cost, int profit) {
+            this.cost = cost;
+            this.profit = profit;
+        }
     }
-  }
 
 }

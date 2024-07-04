@@ -6,13 +6,13 @@ package com.freedom.sword_offer;
  */
 public class Offer27 {
 
-  public TreeNode mirrorTree(TreeNode root) {
-    if (root != null) {
-      TreeNode left = mirrorTree(root.left);
-      TreeNode right = mirrorTree(root.right);
-      root.left = right;
-      root.right = left;
+    public TreeNode mirrorTree(TreeNode root) {
+        if (root != null) {
+            TreeNode left = mirrorTree(root.left);
+            TreeNode right = mirrorTree(root.right);
+            root.left = right;
+            root.right = left;
+        }
+        return root;
     }
-    return root;
-  }
 }

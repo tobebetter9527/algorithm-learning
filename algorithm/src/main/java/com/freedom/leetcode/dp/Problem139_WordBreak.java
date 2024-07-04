@@ -11,60 +11,60 @@ import java.util.List;
  */
 public class Problem139_WordBreak {
 
-  public static boolean wordBreak(String s, List<String> wordDict) {
-    return recursive(s, wordDict, 0);
-  }
-
-  private static boolean recursive(String s, List<String> wordDict, int index) {
-    if (index == s.length()) {
-      return true;
+    public static boolean wordBreak(String s, List<String> wordDict) {
+        return recursive(s, wordDict, 0);
     }
 
-    for (int i = 0; i < wordDict.size(); i++) {
-      String word = wordDict.get(i);
-      if (index + word.length() <= s.length()) {
-        boolean flag = isMatch(s, word, index) && recursive(s, wordDict, index + word.length());
-        if (flag) {
-          return true;
+    private static boolean recursive(String s, List<String> wordDict, int index) {
+        if (index == s.length()) {
+            return true;
         }
-      }
-    }
 
-    return false;
-  }
+        for (int i = 0; i < wordDict.size(); i++) {
+            String word = wordDict.get(i);
+            if (index + word.length() <= s.length()) {
+                boolean flag = isMatch(s, word, index) && recursive(s, wordDict, index + word.length());
+                if (flag) {
+                    return true;
+                }
+            }
+        }
 
-  private static boolean isMatch(String s, String word, int index) {
-    for (int i = 0; i < word.length(); i++) {
-      if (s.charAt(index + i) != word.charAt(i)) {
         return false;
-      }
     }
-    return true;
-  }
 
-
-  public static boolean wordBreak2(String s, List<String> wordDict) {
-    int n = s.length();
-    boolean[] dp = new boolean[n + 1];
-    dp[n] = true;
-
-    for (int index = n - 1; index >= 0; index--) {
-      for (int i = 0; i < wordDict.size(); i++) {
-        String word = wordDict.get(i);
-        if (index + word.length() <= s.length() && isMatch(s, word, index) && dp[index + word.length()]) {
-          dp[index] = true;
-          break;
+    private static boolean isMatch(String s, String word, int index) {
+        for (int i = 0; i < word.length(); i++) {
+            if (s.charAt(index + i) != word.charAt(i)) {
+                return false;
+            }
         }
-      }
+        return true;
     }
-    return dp[0];
-  }
 
 
-  public static void main(String[] args) {
-    String s = "leetcode";
-    List<String> wordDict = Arrays.asList("leet", "code");
-    System.out.println(wordBreak2(s, wordDict));
-  }
+    public static boolean wordBreak2(String s, List<String> wordDict) {
+        int n = s.length();
+        boolean[] dp = new boolean[n + 1];
+        dp[n] = true;
+
+        for (int index = n - 1; index >= 0; index--) {
+            for (int i = 0; i < wordDict.size(); i++) {
+                String word = wordDict.get(i);
+                if (index + word.length() <= s.length() && isMatch(s, word, index) && dp[index + word.length()]) {
+                    dp[index] = true;
+                    break;
+                }
+            }
+        }
+        return dp[0];
+    }
+
+
+    public static void main(String[] args) {
+        String s = "leetcode";
+        List<String> wordDict = Arrays.asList("leet", "code");
+        System.out.println(wordBreak2(s, wordDict));
+    }
 
 }

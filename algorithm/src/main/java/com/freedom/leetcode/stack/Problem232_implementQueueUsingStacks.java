@@ -21,49 +21,49 @@ import java.util.Stack;
  */
 public class Problem232_implementQueueUsingStacks {
 
-  /**
-   * 复杂度分析
-   * <p>
-   * 时间复杂度：\texttt{push}push 和 \texttt{empty}empty 为 O(1)O(1)，\texttt{pop}pop 和 \texttt{peek}peek 为均摊
-   * O(1)O(1)。对于每个元素，至多入栈和出栈各两次，故均摊复杂度为 O(1)O(1)。
-   * <p>
-   * 空间复杂度：O(n)O(n)。其中 nn 是操作总数。对于有 nn 次 \texttt{push}push 操作的情况，队列中会有 nn 个元素，故空间复杂度为 O(n)O(n)。
-   */
-  private static class MyQueue {
+    /**
+     * 复杂度分析
+     * <p>
+     * 时间复杂度：\texttt{push}push 和 \texttt{empty}empty 为 O(1)O(1)，\texttt{pop}pop 和 \texttt{peek}peek 为均摊
+     * O(1)O(1)。对于每个元素，至多入栈和出栈各两次，故均摊复杂度为 O(1)O(1)。
+     * <p>
+     * 空间复杂度：O(n)O(n)。其中 nn 是操作总数。对于有 nn 次 \texttt{push}push 操作的情况，队列中会有 nn 个元素，故空间复杂度为 O(n)O(n)。
+     */
+    private static class MyQueue {
 
-    Stack<Integer> input;
-    Stack<Integer> output;
+        Stack<Integer> input;
+        Stack<Integer> output;
 
-    public MyQueue() {
-      input = new Stack<>();
-      output = new Stack<>();
-    }
-
-    public void push(int x) {
-      input.push(x);
-    }
-
-    public int pop() {
-      if (output.isEmpty()) {
-        while (!input.isEmpty()) {
-          output.push(input.pop());
+        public MyQueue() {
+            input = new Stack<>();
+            output = new Stack<>();
         }
-      }
-      return output.pop();
-    }
 
-    public int peek() {
-      if (output.isEmpty()) {
-        while (!input.isEmpty()) {
-          output.push(input.pop());
+        public void push(int x) {
+            input.push(x);
         }
-      }
-      return output.peek();
-    }
 
-    public boolean empty() {
-      return input.isEmpty() && output.isEmpty();
+        public int pop() {
+            if (output.isEmpty()) {
+                while (!input.isEmpty()) {
+                    output.push(input.pop());
+                }
+            }
+            return output.pop();
+        }
+
+        public int peek() {
+            if (output.isEmpty()) {
+                while (!input.isEmpty()) {
+                    output.push(input.pop());
+                }
+            }
+            return output.peek();
+        }
+
+        public boolean empty() {
+            return input.isEmpty() && output.isEmpty();
+        }
     }
-  }
 
 }

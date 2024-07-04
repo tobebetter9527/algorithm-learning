@@ -6,29 +6,29 @@ package com.freedom.sword_offer;
  */
 public class Offer56II {
 
-  public static int singleNumber(int[] nums) {
-    int[] bits = new int[32];
-    for (int num : nums) {
-      for (int i = 0; i < 32; i++) {
-        bits[i] += (num >> i) & 1;
-      }
+    public static int singleNumber(int[] nums) {
+        int[] bits = new int[32];
+        for (int num : nums) {
+            for (int i = 0; i < 32; i++) {
+                bits[i] += (num >> i) & 1;
+            }
+        }
+
+        int ans = 0;
+        for (int i = 0; i < 32; i++) {
+            if (bits[i] % 3 != 0) {
+                ans |= 1 << i;
+            }
+        }
+
+        return ans;
     }
 
-    int ans = 0;
-    for (int i = 0; i < 32; i++) {
-      if (bits[i] % 3 != 0) {
-        ans |= 1 << i;
-      }
+    public static void main(String[] args) {
+        int[] nums = {1, 1, 1, 6};
+        System.out.println(singleNumber(nums));
+
+
     }
-
-    return ans;
-  }
-
-  public static void main(String[] args) {
-    int[] nums = {1, 1, 1, 6};
-    System.out.println(singleNumber(nums));
-
-
-  }
 
 }

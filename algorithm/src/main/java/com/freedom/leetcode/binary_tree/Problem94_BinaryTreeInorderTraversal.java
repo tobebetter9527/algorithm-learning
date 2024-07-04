@@ -11,18 +11,18 @@ import java.util.List;
  */
 public class Problem94_BinaryTreeInorderTraversal {
 
-  public List<Integer> inorderTraversal(TreeNode root) {
-    List<Integer> list = new LinkedList<>();
-    traversal(root,list);
-    return list;
-  }
-
-  private void traversal(TreeNode node, List<Integer> list) {
-    if (node == null) {
-      return;
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> list = new LinkedList<>();
+        traversal(root, list);
+        return list;
     }
-    traversal(node.left, list);
-    list.add(node.val);
-    traversal(node.right, list);
-  }
+
+    private void traversal(TreeNode node, List<Integer> list) {
+        if (node == null) {
+            return;
+        }
+        traversal(node.left, list);
+        list.add(node.val);
+        traversal(node.right, list);
+    }
 }

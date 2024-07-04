@@ -11,19 +11,19 @@ import java.util.List;
  */
 public class Problem144_BinaryTreePreorderTraversal {
 
-  public List<Integer> preorderTraversal(TreeNode root) {
-    List<Integer> list = new LinkedList<>();
-    return traversal(root, list);
-  }
-
-  private List<Integer> traversal(TreeNode root, List<Integer> list) {
-    if (root == null) {
-      return list;
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> list = new LinkedList<>();
+        return traversal(root, list);
     }
-    list.add(root.val);
-    traversal(root.left, list);
-    traversal(root.right, list);
-    return list;
-  }
+
+    private List<Integer> traversal(TreeNode root, List<Integer> list) {
+        if (root == null) {
+            return list;
+        }
+        list.add(root.val);
+        traversal(root.left, list);
+        traversal(root.right, list);
+        return list;
+    }
 
 }
