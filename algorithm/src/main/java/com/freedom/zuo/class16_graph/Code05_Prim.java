@@ -16,7 +16,14 @@ import java.util.Set;
  * @create 2022/07/11 21:28
  */
 public class Code05_Prim {
-
+    /**
+     * 首先，Prim 算法也使用贪心思想来让生成树的权重尽可能小
+     * <p>
+     * 其次，Prim 算法使用 BFS 算法思想 和visited布尔数组避免成环
+     *
+     * @param graph
+     * @return
+     */
     public static Set<Edge> primMST(Graph graph) {
 
         PriorityQueue<Edge> heap = new PriorityQueue<>(new EdgeComparator());
